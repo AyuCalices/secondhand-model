@@ -1,14 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a82d2df6-f96d-4203-b020-9b64cee8bfdd" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitmodules" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/secondhand-model-submodule" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/secondhand_model__base_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/server_api_11.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/secondhand-model.iml" beforeDir="false" afterPath="$PROJECT_DIR$/secondhand-model.iml" afterDir="false" />
-    </list>
+    <list default="true" id="a82d2df6-f96d-4203-b020-9b64cee8bfdd" name="Changes" comment="added submodule" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -53,6 +46,14 @@
       <updated>1666465548211</updated>
       <workItem from="1666465551436" duration="2452000" />
     </task>
+    <task id="LOCAL-00001" summary="added submodule">
+      <created>1666474489030</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1666474489030</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -68,5 +69,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="added submodule" />
+    <option name="LAST_COMMIT_MESSAGE" value="added submodule" />
   </component>
 </project>
