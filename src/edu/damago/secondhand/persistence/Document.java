@@ -25,11 +25,11 @@ public class Document {
     @Column(name = "content", nullable = false)
     private byte[] content;
 
-    public Long getId() {
+    public Long getIdentity() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setIdentity(Long id) {
         this.id = id;
     }
 
