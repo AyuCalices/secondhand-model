@@ -1,17 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a82d2df6-f96d-4203-b020-9b64cee8bfdd" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/edu/damago/secondhand/persistence/DocumentOld.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/edu/damago/secondhand/persistence/Order.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/edu/damago/secondhand/persistence/BaseEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/damago/secondhand/persistence/BaseEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/edu/damago/secondhand/persistence/Document.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/damago/secondhand/persistence/Document.java" afterDir="false" />
-    </list>
+    <list default="true" id="a82d2df6-f96d-4203-b020-9b64cee8bfdd" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
