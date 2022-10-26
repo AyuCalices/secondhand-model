@@ -1,33 +1,41 @@
 package edu.damago.secondhand.persistence;
 
+import javax.persistence.Column;
+import javax.persistence.Embeddable;
+
+@Embeddable
 public class Name {
-    private char[] title;
-    private char[] given;
-    private char[] family;
+
+    @Column(nullable = true, updatable = true)
+    private String title;
+    @Column(nullable = false, updatable = true)
+    private String given; // TODO does given stand for a mandatory forename?
+    @Column(nullable = true, updatable = true) // TODO then -> nullable
+    private String family;
 
     protected Name() {}
 
-    public char[] getTitle() {
+    public String getTitle() {
         return title;
     }
 
-    public void setTitle(char[] title) {
+    public void setTitle(String title) {
         this.title = title;
     }
 
-    public char[] getGiven() {
+    public String getGiven() {
         return given;
     }
 
-    public void setGiven(char[] given) {
+    public void setGiven(String given) {
         this.given = given;
     }
 
-    public char[] getFamily() {
+    public String getFamily() {
         return family;
     }
 
-    public void setFamily(char[] family) {
+    public void setFamily(String family) {
         this.family = family;
     }
 }

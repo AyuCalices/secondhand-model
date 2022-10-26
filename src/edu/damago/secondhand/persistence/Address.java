@@ -1,42 +1,50 @@
 package edu.damago.secondhand.persistence;
 
+import javax.persistence.Column;
+import javax.persistence.Embeddable;
+
+@Embeddable
 public class Address {
-    private char[] street;
-    private char[] city;
-    private char[] country;
-    private char[] postcode;
+    @Column(nullable = false, updatable = true)
+    private String street;
+    @Column(nullable = false, updatable = true)
+    private String city;
+    @Column(nullable = false, updatable = true)
+    private String country;
+    @Column(nullable = false, updatable = true)
+    private String postcode;
 
     protected Address() {}
 
-    public char[] getStreet() {
+    public String getStreet() {
         return street;
     }
 
-    public void setStreet(char[] street) {
+    public void setStreet(String street) {
         this.street = street;
     }
 
-    public char[] getCity() {
+    public String getCity() {
         return city;
     }
 
-    public void setCity(char[] city) {
+    public void setCity(String city) {
         this.city = city;
     }
 
-    public char[] getCountry() {
+    public String getCountry() {
         return country;
     }
 
-    public void setCountry(char[] country) {
+    public void setCountry(String country) {
         this.country = country;
     }
 
-    public char[] getPostcode() {
+    public String getPostcode() {
         return postcode;
     }
 
-    public void setPostcode(char[] postcode) {
+    public void setPostcode(String postcode) {
         this.postcode = postcode;
     }
 }
