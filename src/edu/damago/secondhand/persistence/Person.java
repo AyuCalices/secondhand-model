@@ -1,92 +1,24 @@
 package edu.damago.secondhand.persistence;
 
-import javax.persistence.*;
-
-@Entity
-@Table(name = "Person", indexes = {
-        @Index(name = "email", columnList = "email", unique = true),
-        @Index(name = "avatarReference", columnList = "avatarReference")
-})
 public class Person {
-    @Id
-    @Column(name = "personIdentity", nullable = false)
-    private Long id;
-
-    @MapsId
-    @OneToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "personIdentity", nullable = false)
-    private BaseEntity baseEntity;
-
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "avatarReference", nullable = false)
-    private Document avatarReference;
-
-    @Column(name = "email", nullable = false, length = 128)
-    private String email;
-
-    @Column(name = "passwordHash", nullable = false, length = 64)
+    private char[] email;
     private String passwordHash;
+    private Group group;
+    private Name name;
+    private Address address;
+    private Account account;
+    private char[][] phones;
+    private Document avatar;
+    private Offer[] offers;
+    //private Order[] orders;
 
-    @Lob
-    @Column(name = "groupAlias", nullable = false)
-    private String groupAlias;
+    protected Person(){}
 
-    @Column(name = "title", length = 15)
-    private String title;
-
-    @Column(name = "surname", nullable = false, length = 31)
-    private String surname;
-
-    @Column(name = "forename", nullable = false, length = 31)
-    private String forename;
-
-    @Column(name = "street", nullable = false, length = 63)
-    private String street;
-
-    @Column(name = "city", nullable = false, length = 63)
-    private String city;
-
-    @Column(name = "country", nullable = false, length = 63)
-    private String country;
-
-    @Column(name = "postcode", nullable = false, length = 15)
-    private String postcode;
-
-    @Column(name = "iban", nullable = false, length = 32)
-    private String iban;
-
-    @Column(name = "bic", nullable = false, length = 11)
-    private String bic;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public BaseEntity getBaseEntity() {
-        return baseEntity;
-    }
-
-    public void setBaseEntity(BaseEntity baseEntity) {
-        this.baseEntity = baseEntity;
-    }
-
-    public Document getAvatarReference() {
-        return avatarReference;
-    }
-
-    public void setAvatarReference(Document avatarReference) {
-        this.avatarReference = avatarReference;
-    }
-
-    public String getEmail() {
+    public char[] getEmail() {
         return email;
     }
 
-    public void setEmail(String email) {
+    public void setEmail(char[] email) {
         this.email = email;
     }
 
@@ -98,84 +30,59 @@ public class Person {
         this.passwordHash = passwordHash;
     }
 
-    public String getGroupAlias() {
-        return groupAlias;
+    public Group getGroup() {
+        return group;
     }
 
-    public void setGroupAlias(String groupAlias) {
-        this.groupAlias = groupAlias;
+    public void setGroup(Group group) {
+        this.group = group;
     }
 
-    public String getTitle() {
-        return title;
+    public Name getName() {
+        return name;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    protected void setName(Name name) {
+        this.name = name;
     }
 
-    public String getSurname() {
-        return surname;
+    public Address getAddress() {
+        return address;
     }
 
-    public void setSurname(String surname) {
-        this.surname = surname;
+    protected void setAddress(Address address) {
+        this.address = address;
     }
 
-    public String getForename() {
-        return forename;
+    public Account getPrimaryAccount() {
+        return account;
     }
 
-    public void setForename(String forename) {
-        this.forename = forename;
+    protected void setPrimaryAccount(Account account) {
+        this.account = account;
     }
 
-    public String getStreet() {
-        return street;
+    public char[][] getPhones() {
+        return phones;
     }
 
-    public void setStreet(String street) {
-        this.street = street;
+    protected void setPhones(char[][] phones) {
+        this.phones = phones;
     }
 
-    public String getCity() {
-        return city;
+    public Document getAvatar() {
+        return avatar;
     }
 
-    public void setCity(String city) {
-        this.city = city;
+    public void setAvatar(Document avatar) {
+        this.avatar = avatar;
     }
 
-    public String getCountry() {
-        return country;
+    public Offer[] getOffers() {
+        return offers;
     }
 
-    public void setCountry(String country) {
-        this.country = country;
+    protected void setOffers(Offer[] offers) {
+        this.offers = offers;
     }
-
-    public String getPostcode() {
-        return postcode;
-    }
-
-    public void setPostcode(String postcode) {
-        this.postcode = postcode;
-    }
-
-    public String getIban() {
-        return iban;
-    }
-
-    public void setIban(String iban) {
-        this.iban = iban;
-    }
-
-    public String getBic() {
-        return bic;
-    }
-
-    public void setBic(String bic) {
-        this.bic = bic;
-    }
-
 }
