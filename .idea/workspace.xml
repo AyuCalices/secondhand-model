@@ -1,20 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a82d2df6-f96d-4203-b020-9b64cee8bfdd" name="Changes" comment="added submodule">
+    <list default="true" id="a82d2df6-f96d-4203-b020-9b64cee8bfdd" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/edu/damago/secondhand/persistence/Account.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/edu/damago/secondhand/persistence/Address.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/edu/damago/secondhand/persistence/Group.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/edu/damago/secondhand/persistence/Name.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/edu/damago/secondhand/persistence/PersonOld.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/edu/damago/secondhand/persistence/DocumentOld.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/edu/damago/secondhand/persistence/Order.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/secondhand-model-submodule" beforeDir="false" afterPath="$PROJECT_DIR$/secondhand-model-submodule" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/edu/damago/secondhand/persistence/Offer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/damago/secondhand/persistence/Offer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/edu/damago/secondhand/persistence/Person.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/damago/secondhand/persistence/Person.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/edu/damago/secondhand/persistence/PhoneAssociation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/damago/secondhand/persistence/PhoneAssociation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/edu/damago/secondhand/persistence/Purchase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/damago/secondhand/persistence/Purchase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/edu/damago/secondhand/persistence/BaseEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/damago/secondhand/persistence/BaseEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/edu/damago/secondhand/persistence/Document.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/damago/secondhand/persistence/Document.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,7 +28,6 @@
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
         <entry key="$PROJECT_DIR$" value="master" />
-        <entry key="$PROJECT_DIR$/secondhand-model-submodule" value="d3bbfbc3091a396cfefce6f2c6223ea6e253bc57" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -76,8 +71,7 @@
       <option name="presentableId" value="Default" />
       <updated>1666465548211</updated>
       <workItem from="1666465551436" duration="2452000" />
-      <workItem from="1666625837885" duration="205000" />
-      <workItem from="1666626097679" duration="2635000" />
+      <workItem from="1666725968781" duration="7602000" />
     </task>
     <task id="LOCAL-00001" summary="added submodule">
       <created>1666474489030</created>
@@ -86,14 +80,7 @@
       <option name="project" value="LOCAL" />
       <updated>1666474489030</updated>
     </task>
-    <task id="LOCAL-00002" summary="added submodule">
-      <created>1666474746797</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1666474746797</updated>
-    </task>
-    <option name="localTasksCounter" value="3" />
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -110,7 +97,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="main" />
+                        <option value="a1_Person" />
                       </list>
                     </value>
                   </entry>

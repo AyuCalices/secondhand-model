@@ -1,59 +1,39 @@
 package edu.damago.secondhand.persistence;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
-@Entity
-@Table(name = "Document", indexes = {
-        @Index(name = "hash", columnList = "hash", unique = true)
-})
-public class Document {
-    @Id
-    @Column(name = "documentIdentity", nullable = false)
-    private Long id;
+@Embeddable
+@Table(name = "Document", indexes = @Index(columnList = "discriminator"))
+public class Document extends BaseEntity {
 
-    @MapsId
-    @OneToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "documentIdentity", nullable = false)
-    private BaseEntity baseEntity;
-
-    @Column(name = "hash", nullable = false, length = 64)
+    @NotNull
+    @Column(nullable = false, updatable = false)
     private String hash;
-
-    @Column(name = "type", nullable = false, length = 63)
-    private String type;
-
-    @Column(name = "content", nullable = false)
+    @Column(nullable = false, updatable = true)
+    @ElementCollection
+    @CollectionTable
+    private char[] type;
+    @Column(nullable = false, updatable = false)
+    @ElementCollection
+    @CollectionTable
     private byte[] content;
 
-    public Long getIdentity() {
-        return id;
-    }
-
-    public void setIdentity(Long id) {
-        this.id = id;
-    }
-
-    public BaseEntity getBaseEntity() {
-        return baseEntity;
-    }
-
-    public void setBaseEntity(BaseEntity baseEntity) {
-        this.baseEntity = baseEntity;
-    }
+    protected Document() {}
 
     public String getHash() {
         return hash;
     }
 
-    public void setHash(String hash) {
+    protected void setHash(String hash) {
         this.hash = hash;
     }
 
-    public String getType() {
+    public char[] getType() {
         return type;
     }
 
-    public void setType(String type) {
+    public void setType(char[] type) {
         this.type = type;
     }
 
@@ -61,8 +41,7 @@ public class Document {
         return content;
     }
 
-    public void setContent(byte[] content) {
+    protected void setContent(byte[] content) {
         this.content = content;
     }
-
 }
