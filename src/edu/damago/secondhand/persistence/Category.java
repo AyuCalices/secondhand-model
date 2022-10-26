@@ -20,5 +20,5 @@ public enum Category {
     INDUSTRIAL,
     STATIONERY,
     DOMESTIC,
-    GARDEN
+    GARDEN;
 }
