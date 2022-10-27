@@ -15,7 +15,7 @@ public class Article {
     @Column
     private String description;
 
-    protected Article() {}
+    public Article() {}
 
     public Category getCategory() {
         return category;

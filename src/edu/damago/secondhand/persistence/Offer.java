@@ -2,6 +2,7 @@ package edu.damago.secondhand.persistence;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Positive;
 
 @Entity
 @Table(name = "Offer", indexes = {
@@ -44,12 +45,12 @@ public class Offer extends BaseEntity{
     @Column
     private Long postage;
 
-    protected Offer(Person sellerReference, Document avatarReference, Order order) {
+    public Offer(Person sellerReference, Document avatarReference, Order order) {
         setSellerReference(sellerReference);
         setAvatarReference(avatarReference);
         setOrder(order);
     }
-    protected Offer(Person sellerReference, Document avatarReference) {
+    public Offer(Person sellerReference, Document avatarReference) {
         setSellerReference(sellerReference);
         setAvatarReference(avatarReference);
     }
