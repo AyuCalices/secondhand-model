@@ -5,6 +5,8 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Positive;
 
 @Entity
+@Inheritance(strategy=InheritanceType.JOINED)
+@DiscriminatorColumn(name="discriminator")
 @Table(name = "Offer", indexes = {
         @Index(name = "alias", columnList = "alias"),
         @Index(name = "purchaseReference", columnList = "purchaseReference"),
@@ -20,7 +22,6 @@ public class Offer extends BaseEntity{
     @ManyToOne
     @JoinColumn
     private Document avatarReference;
-
     @Embedded
     @NotNull
     @ManyToOne
@@ -30,30 +31,19 @@ public class Offer extends BaseEntity{
     @OneToMany
     @JoinColumn
     private Order order;
-
     @ManyToOne
     @JoinColumn
     private Purchase purchaseReference;
-
     @Column
     private String serial;
-
     @Positive
     @Column
     private Long price;
-
+    @Positive
     @Column
     private Long postage;
 
-    public Offer(Person sellerReference, Document avatarReference, Order order) {
-        setSellerReference(sellerReference);
-        setAvatarReference(avatarReference);
-        setOrder(order);
-    }
-    public Offer(Person sellerReference, Document avatarReference) {
-        setSellerReference(sellerReference);
-        setAvatarReference(avatarReference);
-    }
+    protected Offer() {}
 
     public Document getAvatarReference() {
         return avatarReference;

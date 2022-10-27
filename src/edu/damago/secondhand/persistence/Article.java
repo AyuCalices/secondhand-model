@@ -7,7 +7,6 @@ import javax.persistence.Enumerated;
 import javax.validation.constraints.NotNull;
 
 public class Article {
-    @Embedded
     @Enumerated(EnumType.STRING)
     @Column
     private Category category;
