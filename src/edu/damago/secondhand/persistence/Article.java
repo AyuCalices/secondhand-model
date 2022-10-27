@@ -2,10 +2,13 @@ package edu.damago.secondhand.persistence;
 
 import javax.persistence.Column;
 import javax.persistence.Embedded;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.validation.constraints.NotNull;
 
 public class Article {
     @Embedded
+    @Enumerated(EnumType.STRING)
     @Column
     private Category category;
     @Column
