@@ -43,7 +43,7 @@ public abstract class BaseEntity implements Comparable<BaseEntity> {
 	private long identity;
 
 	@Positive
-	@Version
+//	@Version
 	@Column(nullable = false, updatable = true)
 	private int version;
 

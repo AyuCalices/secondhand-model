@@ -1,24 +1,30 @@
 package edu.damago.secondhand.persistence;
 
+import javax.persistence.Column;
+import javax.persistence.Embeddable;
+
+@Embeddable
 public class Account {
-    private char[] iban;
-    private char[] bic;
+    @Column(nullable = false, updatable = true)
+    private String iban;
+    @Column(nullable = false, updatable = true)
+    private String bic;
 
     protected Account() {}
 
-    public char[] getIban() {
+    public String getIban() {
         return iban;
     }
 
-    public void setIban(char[] iban) {
+    public void setIban(String iban) {
         this.iban = iban;
     }
 
-    public char[] getBic() {
+    public String getBic() {
         return bic;
     }
 
-    public void setBic(char[] bic) {
+    public void setBic(String bic) {
         this.bic = bic;
     }
 }
