@@ -8,12 +8,12 @@ import javax.validation.constraints.NotNull;
 public class Document extends BaseEntity {
 
     @NotNull
-    @Column(nullable = false, updatable = false)
+    @Column(nullable = false, updatable = false, length = 64)
     private String hash;
     @Column(nullable = false, updatable = true)
     @ElementCollection
     @CollectionTable
-    private char[] type;
+    private String type;
     @Column(nullable = false, updatable = false)
     @ElementCollection
     @CollectionTable
@@ -29,11 +29,11 @@ public class Document extends BaseEntity {
         this.hash = hash;
     }
 
-    public char[] getType() {
+    public String getType() {
         return type;
     }
 
-    public void setType(char[] type) {
+    public void setType(String type) {
         this.type = type;
     }
 
