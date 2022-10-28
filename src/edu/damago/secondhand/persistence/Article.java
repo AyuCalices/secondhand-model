@@ -1,11 +1,9 @@
 package edu.damago.secondhand.persistence;
 
-import javax.persistence.Column;
-import javax.persistence.Embedded;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
+@Embeddable
 public class Article {
     @Enumerated(EnumType.STRING)
     @Column

@@ -13,8 +13,6 @@ public class Name {
     @Column(nullable = true, updatable = true) // TODO then -> nullable
     private String family;
 
-    protected Name() {}
-
     public String getTitle() {
         return title;
     }

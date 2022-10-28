@@ -7,26 +7,19 @@ import javax.validation.constraints.Positive;
 @Entity
 @Inheritance(strategy=InheritanceType.JOINED)
 @DiscriminatorColumn(name="discriminator")
-@Table(name = "Offer", indexes = {
-        @Index(name = "alias", columnList = "alias"),
-        @Index(name = "purchaseReference", columnList = "purchaseReference"),
-        @Index(name = "sellerReference", columnList = "sellerReference"),
-        @Index(name = "category", columnList = "category"),
-        @Index(name = "brand", columnList = "brand, serial", unique = true),
-        @Index(name = "avatarReference", columnList = "avatarReference")
-})
+@Table(name = "Offer")
 public class Offer extends BaseEntity{
 
     @Embedded
     @NotNull
     @ManyToOne
     @JoinColumn
-    private Document avatarReference;
+    private Document avatar;
     @Embedded
     @NotNull
-    @ManyToOne
-    @JoinColumn
-    private Person sellerReference;
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "sellerReference", nullable = false, updatable = true)
+    private Person seller;
     @Embedded
     @OneToMany
     @JoinColumn
@@ -43,19 +36,19 @@ public class Offer extends BaseEntity{
     protected Offer() {}
 
     public Document getAvatarReference() {
-        return avatarReference;
+        return avatar;
     }
 
     public void setAvatarReference(Document avatarReference) {
-        this.avatarReference = avatarReference;
+        this.avatar = avatarReference;
     }
 
-    public Person getSellerReference() {
-        return sellerReference;
+    public Person getSeller() {
+        return seller;
     }
 
-    protected void setSellerReference(Person sellerReference) {
-        this.sellerReference = sellerReference;
+    protected void setSeller(Person seller) {
+        this.seller = seller;
     }
 
     public String getSerial() {

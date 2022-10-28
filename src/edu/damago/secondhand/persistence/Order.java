@@ -4,7 +4,7 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 
-@Embeddable
+@Entity
 @Table(name = "Order", indexes = @Index(columnList = "discriminator"))
 public class Order extends BaseEntity {
 
@@ -18,7 +18,8 @@ public class Order extends BaseEntity {
     private String trackingReference;
     @NotNull
     @Embedded
-    @OneToMany(mappedBy = "Person")
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "buyerReference", nullable = true, updatable = true)
     private Person buyer;
     @Embedded
     @ManyToOne
