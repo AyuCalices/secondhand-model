@@ -8,14 +8,14 @@ import javax.validation.constraints.NotNull;
 @Table(name = "Order", indexes = @Index(columnList = "discriminator"))
 public class Order extends BaseEntity {
 
-    @Column(updatable = true)
+    @Column(nullable = true, updatable = true)
     private Long payed;
-    @Column(updatable = true)
+    @Column(nullable = true, updatable = true)
     private Long departed;
-    @Column(updatable = true)
+    @Column(nullable = true, updatable = true)
     private Long arrived;
-    @Column(updatable = true)
-    private char[] trackingReference;
+    @Column(nullable = true, updatable = true)
+    private String trackingReference;
     @NotNull
     @Embedded
     @OneToMany(mappedBy = "Person")
@@ -55,11 +55,11 @@ public class Order extends BaseEntity {
         this.arrived = arrived;
     }
 
-    public char[] getTrackingReference() {
+    public String getTrackingReference() {
         return trackingReference;
     }
 
-    public void setTrackingReference(char[] trackingReference) {
+    public void setTrackingReference(String trackingReference) {
         this.trackingReference = trackingReference;
     }
 
