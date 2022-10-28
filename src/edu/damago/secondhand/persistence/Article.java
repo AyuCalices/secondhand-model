@@ -1,12 +1,23 @@
 package edu.damago.secondhand.persistence;
 
-public class Article {
-    private Category category;
-    private char[] brand;
-    private char[] alias;
-    private char[] description;
+import javax.persistence.Column;
+import javax.persistence.Embedded;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.validation.constraints.NotNull;
 
-    protected Article() {}
+public class Article {
+    @Enumerated(EnumType.STRING)
+    @Column
+    private Category category;
+    @Column
+    private String brand;
+    @Column
+    private String alias;
+    @Column
+    private String description;
+
+    public Article() {}
 
     public Category getCategory() {
         return category;
@@ -16,27 +27,27 @@ public class Article {
         this.category = category;
     }
 
-    public char[] getBrand() {
+    public String getBrand() {
         return brand;
     }
 
-    public void setBrand(char[] brand) {
+    public void setBrand(String brand) {
         this.brand = brand;
     }
 
-    public char[] getAlias() {
+    public String getAlias() {
         return alias;
     }
 
-    public void setAlias(char[] alias) {
+    public void setAlias(String alias) {
         this.alias = alias;
     }
 
-    public char[] getDescription() {
+    public String getDescription() {
         return description;
     }
 
-    public void setDescription(char[] description) {
+    public void setDescription(String description) {
         this.description = description;
     }
 }
