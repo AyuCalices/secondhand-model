@@ -31,9 +31,6 @@ public class Offer extends BaseEntity{
     @OneToMany
     @JoinColumn
     private Order order;
-    @ManyToOne
-    @JoinColumn
-    private Purchase purchaseReference;
     @Column
     private String serial;
     @Positive
@@ -59,14 +56,6 @@ public class Offer extends BaseEntity{
 
     protected void setSellerReference(Person sellerReference) {
         this.sellerReference = sellerReference;
-    }
-
-    public Purchase getPurchaseReference() {
-        return purchaseReference;
-    }
-
-    public void setPurchaseReference(Purchase purchaseReference) {
-        this.purchaseReference = purchaseReference;
     }
 
     public String getSerial() {

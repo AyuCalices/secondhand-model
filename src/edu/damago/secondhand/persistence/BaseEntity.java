@@ -62,7 +62,7 @@ public abstract class BaseEntity implements Comparable<BaseEntity> {
 		inverseJoinColumns = @JoinColumn(nullable = false, updatable = false, insertable = true, name = "documentReference"),
 		uniqueConstraints = @UniqueConstraint(columnNames = { "entityReference", "documentReference" })
 	)
-	private Set<DocumentOld> illustrations;
+	private Set<Document> illustrations;
 
 
 	/**
@@ -122,17 +122,17 @@ public abstract class BaseEntity implements Comparable<BaseEntity> {
 
 	@JsonbProperty
 	protected long[] getIllustrationReferences () {
-		return this.illustrations.stream().mapToLong(DocumentOld::getIdentity).sorted().toArray();
+		return this.illustrations.stream().mapToLong(Document::getIdentity).sorted().toArray();
 	}
 
 
 	@JsonbTransient
-	public Set<DocumentOld> getIllustrations () {
+	public Set<Document> getIllustrations () {
 		return this.illustrations;
 	}
 
 
-	protected void setIllustrations (final Set<DocumentOld> illustrations) {
+	protected void setIllustrations (final Set<Document> illustrations) {
 		this.illustrations = illustrations;
 	}
 
