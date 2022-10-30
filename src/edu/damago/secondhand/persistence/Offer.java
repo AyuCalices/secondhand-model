@@ -17,7 +17,7 @@ public class Offer extends BaseEntity{
     private Article article;
     @NotNull @Size(max = 32)
     @Column(nullable = false, updatable = false, length = 32)
-    @CacheIndex(updateable = false)
+    @CacheIndex(updatable = false)
     private String serial;
     @NotNull @Positive
     @Column(nullable = false, updatable = true)
