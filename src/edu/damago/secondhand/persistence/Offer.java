@@ -22,7 +22,7 @@ public class Offer extends BaseEntity{
     private Person seller;
     @Embedded
     @OneToMany
-    @JoinColumn
+    @JoinColumn(name = "purchaseReference", nullable = true, updatable = true)
     private Order order;
     @Column
     private String serial;

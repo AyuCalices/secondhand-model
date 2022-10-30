@@ -2,10 +2,15 @@ package edu.damago.secondhand.persistence;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+import java.util.Collections;
+import java.util.Set;
 
 
 @Entity
-@Table(name = "Order", indexes = @Index(columnList = "discriminator"))
+@Table(schema = "secondhand", name = "Purchase")
+@PrimaryKeyJoinColumn(name = "purchaseIdentity")
+@DiscriminatorValue(value = "Purchase")
 public class Order extends BaseEntity {
 
     @Column(nullable = true, updatable = true)
@@ -14,22 +19,22 @@ public class Order extends BaseEntity {
     private Long departed;
     @Column(nullable = true, updatable = true)
     private Long arrived;
-    @Column(nullable = true, updatable = true)
+    @Size(max = 255)
+    @Column(nullable = true, updatable = true, length = 255)
     private String trackingReference;
     @NotNull
-    @Embedded
     @ManyToOne(optional = false)
     @JoinColumn(name = "buyerReference", nullable = true, updatable = true)
     private Person buyer;
-    @Embedded
-    @ManyToOne
-    @ElementCollection
-    @CollectionTable
-    @Column(updatable = false)
-    private Offer[] offers;
-
+    @OneToMany(mappedBy = "order", cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.REMOVE})
+    //@JoinColumn(nullable = true, updatable = true) inside offer
+    private Set<Offer> offers;
 
     protected Order() {}
+    public Order(Person buyer) {
+        this.buyer = buyer;
+        this.offers = Collections.emptySet();
+    }
 
 
     public Long getPayed() {
@@ -72,11 +77,11 @@ public class Order extends BaseEntity {
         this.buyer = buyer;
     }
 
-    public Offer[] getOffers() {
+    public Set<Offer> getOffers() {
         return offers;
     }
 
-    protected void setOffers(Offer[] offers) {
+    protected void setOffers(Set<Offer> offers) {
         this.offers = offers;
     }
 }
