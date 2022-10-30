@@ -50,6 +50,7 @@ public class Person extends BaseEntity {
     )
     @Column(name = "phone", nullable = false, updatable = false, insertable = true, length = 16)
     private Set<String> phones;
+    @NotNull
     @ManyToOne(optional = false)
     @JoinColumn(name = "avatarReference", nullable = false, updatable = true)
     private Document avatar;

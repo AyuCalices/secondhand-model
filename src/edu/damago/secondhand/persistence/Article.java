@@ -9,6 +9,7 @@ public class Article {
     @Column
     private Category category;
     @Column
+    @CacheIndex(updateable = false)
     private String brand;
     @Column
     private String alias;

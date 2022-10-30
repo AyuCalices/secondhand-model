@@ -24,10 +24,9 @@ public class Order extends BaseEntity {
     private String trackingReference;
     @NotNull
     @ManyToOne(optional = false)
-    @JoinColumn(name = "buyerReference", nullable = true, updatable = true)
+    @JoinColumn(name = "buyerReference", nullable = false, updatable = true)
     private Person buyer;
     @OneToMany(mappedBy = "order", cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.REMOVE})
-    //@JoinColumn(nullable = true, updatable = true) inside offer
     private Set<Offer> offers;
 
     protected Order() {}
