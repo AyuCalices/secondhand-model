@@ -21,7 +21,12 @@ public class Article {
     @Column(nullable = false, updatable = true, length = 4090)
     private String description;
 
-    public Article() {}
+    public Article() {
+        this.category = Category.IMAGE;
+        this.brand = "Firma";
+        this.alias = "Article";
+        this.description = "Special Object";
+    }
 
     public Category getCategory() {
         return category;

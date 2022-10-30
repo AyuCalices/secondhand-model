@@ -2,19 +2,30 @@ package edu.damago.secondhand.persistence;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Embeddable
 public class Address {
-    @Column(nullable = false, updatable = true)
+    @NotNull @Size(max = 63)
+    @Column(nullable = false, updatable = true, length = 63)
     private String street;
-    @Column(nullable = false, updatable = true)
+    @NotNull @Size(max = 63)
+    @Column(nullable = false, updatable = true, length = 63)
     private String city;
-    @Column(nullable = false, updatable = true)
+    @NotNull @Size(max = 63)
+    @Column(nullable = false, updatable = true, length = 63)
     private String country;
-    @Column(nullable = false, updatable = true)
+    @NotNull @Size(max = 15)
+    @Column(nullable = false, updatable = true, length = 15)
     private String postcode;
 
-    protected Address() {}
+    protected Address() {
+        this.street = "Musterstraße";
+        this.city = "Musterstadt";
+        this.country = "Musterland";
+        this.postcode = "12345";
+    }
 
     public String getStreet() {
         return street;
