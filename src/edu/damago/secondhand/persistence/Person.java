@@ -1,6 +1,7 @@
 package edu.damago.secondhand.persistence;
 
 import edu.damago.secondhand.util.HashCodes;
+import org.eclipse.persistence.annotations.CacheIndex;
 
 import javax.persistence.*;
 import javax.validation.Valid;
@@ -21,7 +22,7 @@ public class Person extends BaseEntity {
 
     @NotNull @Size(max = 128) @Email
     @Column(nullable = false, updatable = true, length = 128, unique = true)
-    @CacheIndex(updatable = true)
+    @CacheIndex(updateable = true)
     private String email;
     @NotNull @Size(min = 64, max = 64)
     @Column(nullable = false, updatable = true, length = 64)

@@ -1,5 +1,7 @@
 package edu.damago.secondhand.persistence;
 
+import org.eclipse.persistence.annotations.CacheIndex;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;

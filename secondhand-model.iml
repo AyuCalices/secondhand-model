@@ -7,7 +7,11 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" exported="" name="jpa-eclipselink-2" level="project" />
-    <orderEntry type="library" exported="" name="server-api-11" level="project" />
+    <orderEntry type="library" name="server-api-11.0" level="project" />
+    <orderEntry type="library" name="jpa-eclipselink-2.7" level="project" />
+    <orderEntry type="library" name="jval-hibernate-6.0" level="project" />
+    <orderEntry type="library" name="jdbc-mariadb-2.3" level="project" />
+    <orderEntry type="library" name="jrs-jersey-2.28" level="project" />
+    <orderEntry type="library" name="json-yasson-1.0.1" level="project" />
   </component>
 </module>

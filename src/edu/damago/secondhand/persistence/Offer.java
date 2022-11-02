@@ -1,5 +1,7 @@
 package edu.damago.secondhand.persistence;
 
+import org.eclipse.persistence.annotations.CacheIndex;
+
 import javax.persistence.*;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
@@ -17,7 +19,7 @@ public class Offer extends BaseEntity{
     private Article article;
     @NotNull @Size(max = 32)
     @Column(nullable = false, updatable = false, length = 32)
-    @CacheIndex(updatable = false)
+    @CacheIndex(updateable = false)
     private String serial;
     @NotNull @Positive
     @Column(nullable = false, updatable = true)
