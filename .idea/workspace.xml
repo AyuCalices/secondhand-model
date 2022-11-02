@@ -1,13 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a82d2df6-f96d-4203-b020-9b64cee8bfdd" name="Changes" comment="removed submodule">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/jpa_eclipselink_2.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/secondhand_model__base_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/server_api_11.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/server_api_11.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/secondhand-model.iml" beforeDir="false" afterPath="$PROJECT_DIR$/secondhand-model.iml" afterDir="false" />
-    </list>
+    <list default="true" id="a82d2df6-f96d-4203-b020-9b64cee8bfdd" name="Changes" comment="removed submodule" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -61,9 +55,9 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
     "jdk.selected.JAVA_MODULE": "17",
-    "last_opened_file_path": "C:/Users/raja1/IdeaProjects/secondhand-model-submodule/jpa-eclipselink-2.7/eclipselink-src.zip",
+    "last_opened_file_path": "C:/Users/raja1/IdeaProjects/secondhand-model",
     "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Libraries",
+    "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
     "run.code.analysis.last.selected.profile": "pProject Default",
@@ -87,6 +81,7 @@
       <workItem from="1666725968781" duration="7602000" />
       <workItem from="1666958243896" duration="2264000" />
       <workItem from="1666965208243" duration="4694000" />
+      <workItem from="1667403589709" duration="73000" />
     </task>
     <task id="LOCAL-00001" summary="added submodule">
       <created>1666474489030</created>
