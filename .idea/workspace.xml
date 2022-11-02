@@ -1,13 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a82d2df6-f96d-4203-b020-9b64cee8bfdd" name="Changes" comment="removed submodule">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/jpa_eclipselink_2.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/secondhand_model__base_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/server_api_11.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/server_api_11.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/secondhand-model.iml" beforeDir="false" afterPath="$PROJECT_DIR$/secondhand-model.iml" afterDir="false" />
-    </list>
+    <list default="true" id="a82d2df6-f96d-4203-b020-9b64cee8bfdd" name="Changes" comment="importet jars from absolute path" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -102,7 +96,14 @@
       <option name="project" value="LOCAL" />
       <updated>1666964254728</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="importet jars from absolute path">
+      <created>1667402904555</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1667402904555</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -122,6 +123,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="added submodule" />
     <MESSAGE value="added nullable to order fields" />
-    <option name="LAST_COMMIT_MESSAGE" value="added nullable to order fields" />
+    <MESSAGE value="importet jars from absolute path" />
+    <option name="LAST_COMMIT_MESSAGE" value="importet jars from absolute path" />
   </component>
 </project>
