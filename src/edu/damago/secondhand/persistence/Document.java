@@ -1,6 +1,7 @@
 package edu.damago.secondhand.persistence;
 
 import edu.damago.secondhand.util.HashCodes;
+import org.eclipse.persistence.annotations.CacheIndex;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;

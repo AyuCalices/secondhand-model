@@ -1,19 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a82d2df6-f96d-4203-b020-9b64cee8bfdd" name="Changes" comment="added nullable to order fields">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="a82d2df6-f96d-4203-b020-9b64cee8bfdd" name="Changes" comment="removed submodule">
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/jpa_eclipselink_2.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/secondhand_model__base_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/server_api_11.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/server_api_11.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/secondhand-model.iml" beforeDir="false" afterPath="$PROJECT_DIR$/secondhand-model.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/META-INF/persistence.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/META-INF/persistence.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/edu/damago/secondhand/persistence/Article.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/damago/secondhand/persistence/Article.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/edu/damago/secondhand/persistence/BaseEntity.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/edu/damago/secondhand/persistence/Document.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/damago/secondhand/persistence/Document.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/edu/damago/secondhand/persistence/Offer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/damago/secondhand/persistence/Offer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/edu/damago/secondhand/persistence/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/damago/secondhand/persistence/Order.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/edu/damago/secondhand/persistence/Person.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/damago/secondhand/persistence/Person.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/module-info.class" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,9 +60,10 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/raja1/IdeaProjects/secondhand-model/secondhand-model-submodule/server-api-11.0",
+    "jdk.selected.JAVA_MODULE": "17",
+    "last_opened_file_path": "C:/Users/raja1/IdeaProjects/secondhand-model-submodule/jpa-eclipselink-2.7/eclipselink-src.zip",
     "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Project",
+    "project.structure.last.edited": "Libraries",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
     "run.code.analysis.last.selected.profile": "pProject Default",
