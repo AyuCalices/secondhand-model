@@ -2,15 +2,19 @@ package edu.damago.secondhand.persistence;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Embeddable
 public class Account {
-    @Column(nullable = false, updatable = true)
+    @NotNull @Size(max = 32)
+    @Column(nullable = false, updatable = true, length = 32)
     private String iban;
-    @Column(nullable = false, updatable = true)
+    @NotNull @Size(max = 11)
+    @Column(nullable = false, updatable = true, length = 11)
     private String bic;
 
-    protected Account() {}
+    public Account() {}
 
     public String getIban() {
         return iban;

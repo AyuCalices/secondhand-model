@@ -2,20 +2,31 @@ package edu.damago.secondhand.persistence;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Embeddable
 public class Article {
+    @NotNull
     @Enumerated(EnumType.STRING)
-    @Column
+    @Column(nullable = false, updatable = true)
     private Category category;
-    @Column
+    @NotNull @Size(max = 32)
+    @CacheIndex(updateable = false)
+    @Column(nullable = false, updatable = true, length = 32)
     private String brand;
-    @Column
+    @NotNull @Size(max = 64)
+    @Column(nullable = false, updatable = true, length = 64)
     private String alias;
-    @Column
+    @NotNull @Size(max = 4090)
+    @Column(nullable = false, updatable = true, length = 4090)
     private String description;
 
-    public Article() {}
+    public Article() {
+        this.category = Category.IMAGE;
+        this.brand = "Firma";
+        this.alias = "Article";
+        this.description = "Special Object";
+    }
 
     public Category getCategory() {
         return category;
