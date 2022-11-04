@@ -22,14 +22,15 @@ public class Order extends BaseEntity {
     @Size(max = 255)
     @Column(nullable = true, updatable = true, length = 255)
     private String trackingReference;
-    @NotNull
     @ManyToOne(optional = false)
-    @JoinColumn(name = "buyerReference", nullable = false, updatable = true)
+    @JoinColumn(name = "buyerReference", nullable = false, updatable = false, insertable = true)
     private Person buyer;
-    @OneToMany(mappedBy = "order", cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.REMOVE})
+    @OneToMany(mappedBy = "order", cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
     private Set<Offer> offers;
 
-    protected Order() {}
+    protected Order() {
+        this(null);
+    }
     public Order(Person buyer) {
         this.buyer = buyer;
         this.offers = Collections.emptySet();

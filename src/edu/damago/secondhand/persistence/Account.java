@@ -14,8 +14,6 @@ public class Account {
     @Column(nullable = false, updatable = true, length = 11)
     private String bic;
 
-    public Account() {}
-
     public String getIban() {
         return iban;
     }

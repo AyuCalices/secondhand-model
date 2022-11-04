@@ -20,13 +20,6 @@ public class Address {
     @Column(nullable = false, updatable = true, length = 15)
     private String postcode;
 
-    protected Address() {
-        this.street = "Musterstraße";
-        this.city = "Musterstadt";
-        this.country = "Musterland";
-        this.postcode = "12345";
-    }
-
     public String getStreet() {
         return street;
     }

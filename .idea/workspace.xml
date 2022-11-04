@@ -1,13 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a82d2df6-f96d-4203-b020-9b64cee8bfdd" name="Changes" comment="removed submodule">
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/jpa_eclipselink_2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/server_api_11.xml" beforeDir="false" />
+    <list default="true" id="a82d2df6-f96d-4203-b020-9b64cee8bfdd" name="Changes" comment="final code review task 1 (100%)">
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/secondhand-model.iml" beforeDir="false" afterPath="$PROJECT_DIR$/secondhand-model.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/edu/damago/secondhand/persistence/Person.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/damago/secondhand/persistence/Person.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/edu/damago/secondhand/persistence/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/damago/secondhand/persistence/Account.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/edu/damago/secondhand/persistence/Address.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/damago/secondhand/persistence/Address.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/edu/damago/secondhand/persistence/Article.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/damago/secondhand/persistence/Article.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/edu/damago/secondhand/persistence/BaseEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/damago/secondhand/persistence/BaseEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/edu/damago/secondhand/persistence/Name.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/damago/secondhand/persistence/Name.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/edu/damago/secondhand/persistence/Offer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/damago/secondhand/persistence/Offer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/edu/damago/secondhand/persistence/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/damago/secondhand/persistence/Order.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/edu/damago/secondhand/util/Copyright$Wrapper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/edu/damago/secondhand/util/Copyright.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/edu/damago/secondhand/util/Copyright.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/damago/secondhand/util/Copyright.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/edu/damago/secondhand/util/HashCodes.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/edu/damago/secondhand/util/HashCodes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/damago/secondhand/util/HashCodes.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/edu/damago/secondhand/util/JSON.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/edu/damago/secondhand/util/JSON.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/damago/secondhand/util/JSON.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/edu/damago/secondhand/util/JsonProtectedPropertyStrategy.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/edu/damago/secondhand/util/JsonProtectedPropertyStrategy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/damago/secondhand/util/JsonProtectedPropertyStrategy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/edu/damago/secondhand/util/NumeralSystems.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/edu/damago/secondhand/util/NumeralSystems.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/damago/secondhand/util/NumeralSystems.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/edu/damago/secondhand/util/RestJpaLifecycleProvider$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/edu/damago/secondhand/util/RestJpaLifecycleProvider.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/edu/damago/secondhand/util/RestJpaLifecycleProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/damago/secondhand/util/RestJpaLifecycleProvider.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,7 +81,7 @@
     &quot;jdk.selected.JAVA_MODULE&quot;: &quot;17&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/Users/raja1/IdeaProjects/secondhand-model&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
     &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
@@ -89,6 +106,8 @@
       <workItem from="1666958243896" duration="2264000" />
       <workItem from="1666965208243" duration="4694000" />
       <workItem from="1667403589709" duration="73000" />
+      <workItem from="1667573869363" duration="8000" />
+      <workItem from="1667574758131" duration="1685000" />
     </task>
     <task id="LOCAL-00001" summary="added submodule">
       <created>1666474489030</created>
@@ -124,6 +143,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="added submodule" />
     <MESSAGE value="added nullable to order fields" />
-    <option name="LAST_COMMIT_MESSAGE" value="added nullable to order fields" />
+    <MESSAGE value="final code review task 1 (100%)" />
+    <option name="LAST_COMMIT_MESSAGE" value="final code review task 1 (100%)" />
   </component>
 </project>

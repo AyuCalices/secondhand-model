@@ -7,9 +7,6 @@ import javax.validation.constraints.Size;
 
 @Embeddable
 public class Name {
-    /*
-    Questions: VARCHAR & CHAR ?
-     */
 
     @Size(max = 15)
     @Column(nullable = true, updatable = true, length = 15)
@@ -20,12 +17,6 @@ public class Name {
     @NotNull @Size(max = 31)
     @Column(name = "surname", nullable = false, updatable = true, length = 31)
     private String family;
-
-    public Name() {
-        this.title = "Mustertitel";
-        this.given = "Max";
-        this.family = "Mustermann";
-    }
 
     public String getTitle() {
         return title;

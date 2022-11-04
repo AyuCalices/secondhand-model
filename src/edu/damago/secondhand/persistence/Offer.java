@@ -6,6 +6,7 @@ import javax.persistence.*;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Positive;
+import javax.validation.constraints.PositiveOrZero;
 import javax.validation.constraints.Size;
 
 @Entity
@@ -18,40 +19,34 @@ public class Offer extends BaseEntity{
     @Embedded
     private Article article;
     @NotNull @Size(max = 32)
-    @Column(nullable = false, updatable = false, length = 32)
-    @CacheIndex(updateable = false)
+    @Column(nullable = false, updatable = true, length = 32)
     private String serial;
-    @NotNull @Positive
+    @PositiveOrZero
     @Column(nullable = false, updatable = true)
-    private Long price;
-    @NotNull @Positive
+    private long price;
+    @PositiveOrZero
     @Column(nullable = false, updatable = true)
-    private Long postage;
-    @NotNull
+    private long postage;
     @ManyToOne(optional = false)
-    @JoinColumn(name = "sellerReference", nullable = false, updatable = true)
+    @JoinColumn(name = "sellerReference", nullable = false, updatable = false, insertable = true)
     private Person seller;
-    @NotNull
     @ManyToOne(optional = false)
     @JoinColumn(name = "avatarReference", nullable = false, updatable = true)
     private Document avatar;
-
     @ManyToOne(optional = true)
     @JoinColumn(name = "purchaseReference", nullable = true, updatable = true)
     private Order order;
 
-    protected Offer() {}
-    public Offer(String serial, Long price, Long postage, Person seller, Document avatar) {
-        this.serial = serial;
-        this.price = price;//generate?
-        this.postage = postage;
+    protected Offer() {
+        this(null);
+    }
+    public Offer(Person seller) {
         this.seller = seller;
-        this.avatar = avatar;
     }
 
     public Article getArticle() { return article; }
 
-    public void setArticle(Article article) { this.article = article; }
+    protected void setArticle(Article article) { this.article = article; }
 
     public String getSerial() {
         return serial;
@@ -61,19 +56,19 @@ public class Offer extends BaseEntity{
         this.serial = serial;
     }
 
-    public Long getPrice() {
+    public long getPrice() {
         return price;
     }
 
-    public void setPrice(Long price) {
+    public void setPrice(long price) {
         this.price = price;
     }
 
-    public Long getPostage() {
+    public long getPostage() {
         return postage;
     }
 
-    public void setPostage(Long postage) {
+    public void setPostage(long postage) {
         this.postage = postage;
     }
 
@@ -97,7 +92,7 @@ public class Offer extends BaseEntity{
         return order;
     }
 
-    protected void setOrder(Order order) {
+    public void setOrder(Order order) {
         this.order = order;
     }
 }
