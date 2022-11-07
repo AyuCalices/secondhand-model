@@ -1,4 +1,4 @@
-package edu.damago.secondhand.util;
+package edu.htw.secondhand.util;
 
 import static java.lang.Character.digit;
 import static java.lang.Character.forDigit;

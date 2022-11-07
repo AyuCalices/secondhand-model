@@ -1,4 +1,4 @@
-package edu.damago.secondhand.util;
+package edu.htw.secondhand.util;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;

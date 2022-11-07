@@ -1,4 +1,4 @@
-package edu.damago.secondhand.persistence;
+package edu.htw.secondhand.persistence;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -19,11 +19,10 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
-import javax.persistence.Version;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Positive;
 import javax.validation.constraints.Size;
-import edu.damago.secondhand.util.JsonProtectedPropertyStrategy;
+import edu.htw.secondhand.util.JsonProtectedPropertyStrategy;
 
 
 /**

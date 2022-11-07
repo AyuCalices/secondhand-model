@@ -1,4 +1,4 @@
-package edu.damago.secondhand.persistence;
+package edu.htw.secondhand.persistence;
 
 public enum Category {
     ART,

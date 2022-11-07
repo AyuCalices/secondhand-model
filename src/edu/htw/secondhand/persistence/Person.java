@@ -1,6 +1,6 @@
-package edu.damago.secondhand.persistence;
+package edu.htw.secondhand.persistence;
 
-import edu.damago.secondhand.util.HashCodes;
+import edu.htw.secondhand.util.HashCodes;
 import org.eclipse.persistence.annotations.CacheIndex;
 
 import javax.persistence.*;

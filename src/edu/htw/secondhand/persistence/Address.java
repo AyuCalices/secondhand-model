@@ -1,4 +1,4 @@
-package edu.damago.secondhand.persistence;
+package edu.htw.secondhand.persistence;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;

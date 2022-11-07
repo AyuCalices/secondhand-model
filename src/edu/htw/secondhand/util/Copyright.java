@@ -1,4 +1,4 @@
-package edu.damago.secondhand.util;
+package edu.htw.secondhand.util;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;

@@ -1,6 +1,6 @@
-package edu.damago.secondhand.util;
+package edu.htw.secondhand.util;
 
-import static edu.damago.secondhand.util.NumeralSystems.toHexadecimal;
+import static edu.htw.secondhand.util.NumeralSystems.toHexadecimal;
 import static java.nio.charset.StandardCharsets.UTF_8;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;

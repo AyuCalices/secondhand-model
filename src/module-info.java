@@ -8,9 +8,9 @@ module edu.damago.secondhand.model {
 	requires transitive eclipselink.minus.jpa;
 	requires transitive java.ws.rs;
 
-	exports edu.damago.secondhand.persistence;
+	exports edu.htw.secondhand.persistence;
 	exports edu.damago.secondhand.service;
-	exports edu.damago.secondhand.util;
+	exports edu.htw.secondhand.util;
 
-	opens edu.damago.secondhand.persistence;
+	opens edu.htw.secondhand.persistence;
 }
