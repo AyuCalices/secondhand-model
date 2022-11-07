@@ -43,6 +43,10 @@ public class RestJpaLifecycleProvider implements ContainerRequestFilter, Contain
 	private final EntityManagerFactory entityManagerFactory;
 	private final ThreadLocal<EntityManager> entityManagerReference;
 
+	public RestJpaLifecycleProvider() {
+		this(null);
+	}
+
 
 	/**
 	 * Returns the lifecycle provider associated with the given persistence unit. If there is no

@@ -1,42 +1,54 @@
 package edu.damago.secondhand.persistence;
 
+import javax.persistence.Column;
+import javax.persistence.Embeddable;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
+@Embeddable
 public class Address {
-    private char[] street;
-    private char[] city;
-    private char[] country;
-    private char[] postcode;
+    @NotNull @Size(max = 63)
+    @Column(nullable = false, updatable = true, length = 63)
+    private String street;
+    @NotNull @Size(max = 63)
+    @Column(nullable = false, updatable = true, length = 63)
+    private String city;
+    @NotNull @Size(max = 63)
+    @Column(nullable = false, updatable = true, length = 63)
+    private String country;
+    @NotNull @Size(max = 15)
+    @Column(nullable = false, updatable = true, length = 15)
+    private String postcode;
 
-    protected Address() {}
-
-    public char[] getStreet() {
+    public String getStreet() {
         return street;
     }
 
-    public void setStreet(char[] street) {
+    public void setStreet(String street) {
         this.street = street;
     }
 
-    public char[] getCity() {
+    public String getCity() {
         return city;
     }
 
-    public void setCity(char[] city) {
+    public void setCity(String city) {
         this.city = city;
     }
 
-    public char[] getCountry() {
+    public String getCountry() {
         return country;
     }
 
-    public void setCountry(char[] country) {
+    public void setCountry(String country) {
         this.country = country;
     }
 
-    public char[] getPostcode() {
+    public String getPostcode() {
         return postcode;
     }
 
-    public void setPostcode(char[] postcode) {
+    public void setPostcode(String postcode) {
         this.postcode = postcode;
     }
 }

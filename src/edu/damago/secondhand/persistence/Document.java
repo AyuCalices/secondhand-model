@@ -1,25 +1,35 @@
 package edu.damago.secondhand.persistence;
 
+import edu.damago.secondhand.util.HashCodes;
+import org.eclipse.persistence.annotations.CacheIndex;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
-@Embeddable
-@Table(name = "Document", indexes = @Index(columnList = "discriminator"))
+@Entity
+@Table(schema = "secondhand", name = "Document")
+@PrimaryKeyJoinColumn(name = "personIdentity")
+@DiscriminatorValue(value = "Document")
 public class Document extends BaseEntity {
 
-    @NotNull
-    @Column(nullable = false, updatable = false)
+    @NotNull @Size(min = 64, max = 64)
+    @Column(nullable = false, updatable = false, insertable = true, length = 64, unique = true)
+    @CacheIndex(updateable = false)
     private String hash;
-    @Column(nullable = false, updatable = true)
-    @ElementCollection
-    @CollectionTable
-    private char[] type;
-    @Column(nullable = false, updatable = false)
-    @ElementCollection
-    @CollectionTable
+    @NotNull @Size(max = 63)
+    @Column(nullable = false, updatable = true, length = 63)
+    private String type;
+    @NotNull
+    @Column(nullable = false, updatable = false, insertable = true, length = Integer.MAX_VALUE)
     private byte[] content;
 
     protected Document() {}
+    public Document(byte[] content) {
+        this.content = content;
+        this.hash = HashCodes.sha2HashText(256, content);
+        this.type = "application/octet-stream";
+    }
 
     public String getHash() {
         return hash;
@@ -29,11 +39,11 @@ public class Document extends BaseEntity {
         this.hash = hash;
     }
 
-    public char[] getType() {
+    public String getType() {
         return type;
     }
 
-    public void setType(char[] type) {
+    public void setType(String type) {
         this.type = type;
     }
 

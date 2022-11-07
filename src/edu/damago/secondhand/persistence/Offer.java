@@ -1,73 +1,52 @@
 package edu.damago.secondhand.persistence;
 
+import org.eclipse.persistence.annotations.CacheIndex;
+
 import javax.persistence.*;
+import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Positive;
+import javax.validation.constraints.PositiveOrZero;
+import javax.validation.constraints.Size;
 
 @Entity
-@Inheritance(strategy=InheritanceType.JOINED)
-@DiscriminatorColumn(name="discriminator")
-@Table(name = "Offer", indexes = {
-        @Index(name = "alias", columnList = "alias"),
-        @Index(name = "purchaseReference", columnList = "purchaseReference"),
-        @Index(name = "sellerReference", columnList = "sellerReference"),
-        @Index(name = "category", columnList = "category"),
-        @Index(name = "brand", columnList = "brand, serial", unique = true),
-        @Index(name = "avatarReference", columnList = "avatarReference")
-})
+@Table(schema = "secondhand", name = "Offer")
+@PrimaryKeyJoinColumn(name="offerIdentity")
+@DiscriminatorValue(value = "Offer")
 public class Offer extends BaseEntity{
 
+    @NotNull @Valid
     @Embedded
-    @NotNull
-    @ManyToOne
-    @JoinColumn
-    private Document avatarReference;
-    @Embedded
-    @NotNull
-    @ManyToOne
-    @JoinColumn
-    private Person sellerReference;
-    @Embedded
-    @OneToMany
-    @JoinColumn
-    private Order order;
-    @ManyToOne
-    @JoinColumn
-    private Purchase purchaseReference;
-    @Column
+    private Article article;
+    @NotNull @Size(max = 32)
+    @Column(nullable = false, updatable = true, length = 32)
     private String serial;
-    @Positive
-    @Column
-    private Long price;
-    @Positive
-    @Column
-    private Long postage;
+    @PositiveOrZero
+    @Column(nullable = false, updatable = true)
+    private long price;
+    @PositiveOrZero
+    @Column(nullable = false, updatable = true)
+    private long postage;
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "sellerReference", nullable = false, updatable = false, insertable = true)
+    private Person seller;
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "avatarReference", nullable = false, updatable = true)
+    private Document avatar;
+    @ManyToOne(optional = true)
+    @JoinColumn(name = "purchaseReference", nullable = true, updatable = true)
+    private Order order;
 
-    protected Offer() {}
-
-    public Document getAvatarReference() {
-        return avatarReference;
+    protected Offer() {
+        this(null);
+    }
+    public Offer(Person seller) {
+        this.seller = seller;
     }
 
-    public void setAvatarReference(Document avatarReference) {
-        this.avatarReference = avatarReference;
-    }
+    public Article getArticle() { return article; }
 
-    public Person getSellerReference() {
-        return sellerReference;
-    }
-
-    protected void setSellerReference(Person sellerReference) {
-        this.sellerReference = sellerReference;
-    }
-
-    public Purchase getPurchaseReference() {
-        return purchaseReference;
-    }
-
-    public void setPurchaseReference(Purchase purchaseReference) {
-        this.purchaseReference = purchaseReference;
-    }
+    protected void setArticle(Article article) { this.article = article; }
 
     public String getSerial() {
         return serial;
@@ -77,28 +56,43 @@ public class Offer extends BaseEntity{
         this.serial = serial;
     }
 
-    public Long getPrice() {
+    public long getPrice() {
         return price;
     }
 
-    public void setPrice(Long price) {
+    public void setPrice(long price) {
         this.price = price;
+    }
+
+    public long getPostage() {
+        return postage;
+    }
+
+    public void setPostage(long postage) {
+        this.postage = postage;
+    }
+
+    public Person getSeller() {
+        return seller;
+    }
+
+    protected void setSeller(Person seller) {
+        this.seller = seller;
+    }
+
+    public Document getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(Document avatarReference) {
+        this.avatar = avatarReference;
     }
 
     public Order getOrder() {
         return order;
     }
 
-    protected void setOrder(Order order) {
+    public void setOrder(Order order) {
         this.order = order;
     }
-
-    public Long getPostage() {
-        return postage;
-    }
-
-    public void setPostage(Long postage) {
-        this.postage = postage;
-    }
-
 }

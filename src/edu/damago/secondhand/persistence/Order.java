@@ -2,33 +2,39 @@ package edu.damago.secondhand.persistence;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+import java.util.Collections;
+import java.util.Set;
 
 
-@Embeddable
-@Table(name = "Order", indexes = @Index(columnList = "discriminator"))
+@Entity
+@Table(schema = "secondhand", name = "Purchase")
+@PrimaryKeyJoinColumn(name = "purchaseIdentity")
+@DiscriminatorValue(value = "Purchase")
 public class Order extends BaseEntity {
 
-    @Column(updatable = true)
+    @Column(nullable = true, updatable = true)
     private Long payed;
-    @Column(updatable = true)
+    @Column(nullable = true, updatable = true)
     private Long departed;
-    @Column(updatable = true)
+    @Column(nullable = true, updatable = true)
     private Long arrived;
-    @Column(updatable = true)
-    private char[] trackingReference;
-    @NotNull
-    @Embedded
-    @OneToMany(mappedBy = "Person")
+    @Size(max = 255)
+    @Column(nullable = true, updatable = true, length = 255)
+    private String trackingReference;
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "buyerReference", nullable = false, updatable = false, insertable = true)
     private Person buyer;
-    @Embedded
-    @ManyToOne
-    @ElementCollection
-    @CollectionTable
-    @Column(updatable = false)
-    private Offer[] offers;
+    @OneToMany(mappedBy = "order", cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
+    private Set<Offer> offers;
 
-
-    protected Order() {}
+    protected Order() {
+        this(null);
+    }
+    public Order(Person buyer) {
+        this.buyer = buyer;
+        this.offers = Collections.emptySet();
+    }
 
 
     public Long getPayed() {
@@ -55,11 +61,11 @@ public class Order extends BaseEntity {
         this.arrived = arrived;
     }
 
-    public char[] getTrackingReference() {
+    public String getTrackingReference() {
         return trackingReference;
     }
 
-    public void setTrackingReference(char[] trackingReference) {
+    public void setTrackingReference(String trackingReference) {
         this.trackingReference = trackingReference;
     }
 
@@ -71,11 +77,11 @@ public class Order extends BaseEntity {
         this.buyer = buyer;
     }
 
-    public Offer[] getOffers() {
+    public Set<Offer> getOffers() {
         return offers;
     }
 
-    protected void setOffers(Offer[] offers) {
+    protected void setOffers(Set<Offer> offers) {
         this.offers = offers;
     }
 }
