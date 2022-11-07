@@ -1,31 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a82d2df6-f96d-4203-b020-9b64cee8bfdd" name="Changes" comment="final code review task 1 (100%)">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/edu/damago/secondhand/persistence/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/damago/secondhand/persistence/Account.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/edu/damago/secondhand/persistence/Address.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/damago/secondhand/persistence/Address.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/edu/damago/secondhand/persistence/Article.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/damago/secondhand/persistence/Article.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/edu/damago/secondhand/persistence/BaseEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/damago/secondhand/persistence/BaseEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/edu/damago/secondhand/persistence/Name.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/damago/secondhand/persistence/Name.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/edu/damago/secondhand/persistence/Offer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/damago/secondhand/persistence/Offer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/edu/damago/secondhand/persistence/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/damago/secondhand/persistence/Order.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/edu/damago/secondhand/util/Copyright$Wrapper.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/edu/damago/secondhand/util/Copyright.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/edu/damago/secondhand/util/Copyright.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/damago/secondhand/util/Copyright.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/edu/damago/secondhand/util/HashCodes.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/edu/damago/secondhand/util/HashCodes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/damago/secondhand/util/HashCodes.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/edu/damago/secondhand/util/JSON.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/edu/damago/secondhand/util/JSON.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/damago/secondhand/util/JSON.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/edu/damago/secondhand/util/JsonProtectedPropertyStrategy.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/edu/damago/secondhand/util/JsonProtectedPropertyStrategy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/damago/secondhand/util/JsonProtectedPropertyStrategy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/edu/damago/secondhand/util/NumeralSystems.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/edu/damago/secondhand/util/NumeralSystems.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/damago/secondhand/util/NumeralSystems.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/edu/damago/secondhand/util/RestJpaLifecycleProvider$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/edu/damago/secondhand/util/RestJpaLifecycleProvider.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/edu/damago/secondhand/util/RestJpaLifecycleProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/damago/secondhand/util/RestJpaLifecycleProvider.java" afterDir="false" />
-    </list>
+    <list default="true" id="a82d2df6-f96d-4203-b020-9b64cee8bfdd" name="Changes" comment="after review teamwork -&gt; account, address, article, name" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -92,6 +68,21 @@
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\raja1\IdeaProjects\secondhand-model\SQL-Scripts" />
     </key>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="secondhand-model" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="secondhand-model" />
+      <option name="filePath" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">

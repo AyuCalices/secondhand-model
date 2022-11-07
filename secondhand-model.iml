@@ -1,5 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module type="JAVA_MODULE" version="4">
+  <component name="FacetManager">
+    <facet type="jpa" name="JPA">
+      <configuration>
+        <setting name="validation-enabled" value="true" />
+        <datasource-mapping />
+        <naming-strategy-map />
+        <deploymentDescriptor name="persistence.xml" url="file://$MODULE_DIR$/src/META-INF/persistence.xml" />
+      </configuration>
+    </facet>
+  </component>
   <component name="NewModuleRootManager" inherit-compiler-output="true">
     <exclude-output />
     <content url="file://$MODULE_DIR$">
@@ -7,11 +17,11 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="server-api-11.0" level="project" />
-    <orderEntry type="library" name="jpa-eclipselink-2.7" level="project" />
-    <orderEntry type="library" name="jval-hibernate-6.0" level="project" />
-    <orderEntry type="library" name="jdbc-mariadb-2.3" level="project" />
-    <orderEntry type="library" name="jrs-jersey-2.28" level="project" />
-    <orderEntry type="library" name="json-yasson-1.0.1" level="project" />
+    <orderEntry type="library" name="jdbc-mariadb-2.3" level="application" />
+    <orderEntry type="library" name="jpa-eclipselink-2.7" level="application" />
+    <orderEntry type="library" name="jrs-jersey-2.28" level="application" />
+    <orderEntry type="library" name="json-yasson-1.0.1" level="application" />
+    <orderEntry type="library" name="jval-hibernate-6.0" level="application" />
+    <orderEntry type="library" name="server-api-11.0" level="application" />
   </component>
 </module>
