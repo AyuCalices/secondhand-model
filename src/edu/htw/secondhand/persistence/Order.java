@@ -1,5 +1,7 @@
 package edu.htw.secondhand.persistence;
 
+import javax.json.bind.annotation.JsonbProperty;
+import javax.json.bind.annotation.JsonbTransient;
 import javax.persistence.*;
 import javax.validation.constraints.Size;
 import java.util.Collections;
@@ -68,6 +70,7 @@ public class Order extends BaseEntity {
         this.trackingReference = trackingReference;
     }
 
+    @JsonbTransient
     public Person getBuyer() {
         return buyer;
     }
@@ -76,11 +79,27 @@ public class Order extends BaseEntity {
         this.buyer = buyer;
     }
 
+    @JsonbTransient
     public Set<Offer> getOffers() {
         return offers;
     }
 
     protected void setOffers(Set<Offer> offers) {
         this.offers = offers;
+    }
+
+    @JsonbProperty
+    protected long[] getOfferReferences() {
+        return offers.stream().mapToLong(x -> x.getIdentity()).sorted().toArray();
+    }
+
+    @JsonbProperty
+    protected Long getBuyerReference() {
+        return buyer.getIdentity();
+    }
+
+    @JsonbProperty
+    protected Long getSellerReference() {
+        return offers.stream().mapToLong(x -> x.getSellerReference()).sorted().toArray()[0];
     }
 }

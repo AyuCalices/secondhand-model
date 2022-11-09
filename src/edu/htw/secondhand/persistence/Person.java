@@ -3,14 +3,18 @@ package edu.htw.secondhand.persistence;
 import edu.htw.secondhand.util.HashCodes;
 import org.eclipse.persistence.annotations.CacheIndex;
 
+import javax.json.bind.annotation.JsonbProperty;
+import javax.json.bind.annotation.JsonbTransient;
 import javax.persistence.*;
 import javax.validation.Valid;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 @Entity
 @Table(schema = "secondhand", name = "Person")
@@ -129,6 +133,7 @@ public class Person extends BaseEntity {
         this.phones = phones;
     }
 
+    @JsonbTransient
     public Document getAvatar() {
         return avatar;
     }
@@ -137,6 +142,7 @@ public class Person extends BaseEntity {
         this.avatar = avatar;
     }
 
+    @JsonbTransient
     public Set<Offer> getOffers() {
         return offers;
     }
@@ -145,6 +151,7 @@ public class Person extends BaseEntity {
         this.offers = offers;
     }
 
+    @JsonbTransient
     public Set<Order> getOrders() {
         return orders;
     }
@@ -152,4 +159,20 @@ public class Person extends BaseEntity {
     protected void setOrders(Set<Order> orders) {
         this.orders = orders;
     }
+
+    @JsonbProperty
+    protected Long getAvatarReference() {
+        return avatar.getIdentity();
+    }
+
+    @JsonbProperty
+    protected long[] getOfferReferences() {
+        return offers.stream().mapToLong(x -> x.getIdentity()).sorted().toArray();
+    }
+
+    @JsonbProperty
+    protected long[] getOrderReferences() {
+        return orders.stream().mapToLong(x -> x.getIdentity()).sorted().toArray();
+    }
+
 }

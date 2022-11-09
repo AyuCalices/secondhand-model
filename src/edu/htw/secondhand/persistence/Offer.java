@@ -1,5 +1,7 @@
 package edu.htw.secondhand.persistence;
 
+import javax.json.bind.annotation.JsonbProperty;
+import javax.json.bind.annotation.JsonbTransient;
 import javax.persistence.*;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
@@ -69,6 +71,7 @@ public class Offer extends BaseEntity{
         this.postage = postage;
     }
 
+    @JsonbTransient
     public Person getSeller() {
         return seller;
     }
@@ -77,6 +80,7 @@ public class Offer extends BaseEntity{
         this.seller = seller;
     }
 
+    @JsonbTransient
     public Document getAvatar() {
         return avatar;
     }
@@ -85,11 +89,27 @@ public class Offer extends BaseEntity{
         this.avatar = avatarReference;
     }
 
+    @JsonbTransient
     public Order getOrder() {
         return order;
     }
 
     public void setOrder(Order order) {
         this.order = order;
+    }
+
+    @JsonbProperty
+    protected Long getAvatarReference() {
+        return avatar.getIdentity();
+    }
+
+    @JsonbProperty
+    protected Long getSellerReference() {
+        return seller.getIdentity();
+    }
+
+    @JsonbProperty
+    protected Long getOrderReference() {
+        return order.getIdentity();
     }
 }
