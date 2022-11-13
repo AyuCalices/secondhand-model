@@ -1,16 +1,16 @@
 module edu.htw.secondhand.model {
-	requires transitive java.logging;
-	requires transitive javax.annotation.api;
-	requires transitive java.validation;
-	requires transitive java.json.bind;
-	
-	requires transitive javax.persistence;
-	requires transitive eclipselink.minus.jpa;
-	requires transitive java.ws.rs;
+    requires transitive java.logging;
+    requires transitive javax.annotation.api;
+    requires transitive java.validation;
+    requires transitive java.json.bind;
 
-	exports edu.htw.secondhand.persistence;
-	exports edu.htw.secondhand.service;
-	exports edu.htw.secondhand.util;
+    requires transitive javax.persistence;
+    requires transitive eclipselink.minus.jpa;
+    requires transitive java.ws.rs;
 
-	opens edu.htw.secondhand.persistence;
+    exports edu.htw.secondhand.persistence;
+    exports edu.htw.secondhand.service;
+    exports edu.htw.secondhand.util;
+
+    opens edu.htw.secondhand.persistence;
 }
