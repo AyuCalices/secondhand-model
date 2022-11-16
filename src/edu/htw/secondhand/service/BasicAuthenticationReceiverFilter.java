@@ -1,6 +1,12 @@
 package edu.htw.secondhand.service;
 
+import edu.htw.secondhand.persistence.Person;
+import edu.htw.secondhand.util.HashCodes;
+import edu.htw.secondhand.util.RestJpaLifecycleProvider;
+
 import javax.annotation.Priority;
+import javax.persistence.EntityManager;
+import javax.ws.rs.ClientErrorException;
 import javax.ws.rs.Priorities;
 import javax.ws.rs.container.ContainerRequestContext;
 import javax.ws.rs.container.ContainerRequestFilter;
@@ -9,6 +15,9 @@ import javax.ws.rs.core.MultivaluedMap;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 import javax.ws.rs.ext.Provider;
+import java.util.Base64;
+import java.util.List;
+import java.util.stream.Collectors;
 
 
 /**
@@ -58,6 +67,31 @@ public class BasicAuthenticationReceiverFilter implements ContainerRequestFilter
 		//   to provide HTTP Basic credentials (i.e. status code 401, and "WWW-Authenticate" header value "Basic").
 		//   Note that the alternative of throwing NotAuthorizedException("Basic") comes with the disadvantage that
 		//   failed authentication attempts clutter the server log with stack traces.
+		if (headers.containsKey("Requester-Identity")) {
+			throw new ClientErrorException(Status.BAD_REQUEST);
+		}
+		final String textCredentials = headers.remove("Authorization").get(0);
+		if (textCredentials != null) {
+			String encodedCredentials = textCredentials.substring("Basic".length()).trim();
+			String decodedCredentials = new String(Base64.getDecoder().decode(encodedCredentials));
+			final EntityManager entityManager = RestJpaLifecycleProvider.entityManager("secondhand");
+
+			final List<Person> foundPersons = entityManager
+					.createQuery("SELECT p FROM Person AS p WHERE p.email = :email", Person.class)
+					.setParameter("email", decodedCredentials.split(":")[0])
+					.getResultList()
+					.stream()
+					.collect(Collectors.toList());
+			if (foundPersons.size() == 1) {
+				int indexOfFirstColon = decodedCredentials.indexOf(":");
+				String password = decodedCredentials.substring(indexOfFirstColon + 1);
+				String passwordHexRepresentation = HashCodes.sha2HashText(256, password);
+				if (passwordHexRepresentation.equals(foundPersons.get(0).getPasswordHash())) {
+					headers.add("Requester-Identity", Long.toString(foundPersons.get(0).getIdentity()));
+					return;
+				}
+			}
+		}
 		final Response response = Response.status(Status.UNAUTHORIZED).header(HttpHeaders.WWW_AUTHENTICATE, "Basic").build();
 		requestContext.abortWith(response);
 	}
