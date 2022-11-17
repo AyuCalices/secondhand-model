@@ -41,7 +41,6 @@ public class Person extends BaseEntity {
     @NotNull @Valid
     @Embedded
     private Address address;
-    //@AttributeOverrides() anpassung der defaults in dieser Tabelle von embeddables
     @NotNull @Valid
     @Embedded
     private Account account;
@@ -60,10 +59,8 @@ public class Person extends BaseEntity {
     @JoinColumn(name = "avatarReference", nullable = false, updatable = true)
     private Document avatar;
     @OneToMany(mappedBy = "seller", cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.REMOVE})
-    //@JoinColumn(nullable = true, updatable = true) inside offer
     private Set<Offer> offers;
     @OneToMany(mappedBy = "buyer", cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.REMOVE})
-    //@JoinColumn(nullable = true, updatable = true) inside order
     private Set<Order> orders;
 
     public Person(){
