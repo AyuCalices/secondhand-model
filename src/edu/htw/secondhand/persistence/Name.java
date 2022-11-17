@@ -1,5 +1,6 @@
 package edu.htw.secondhand.persistence;
 
+import javax.json.bind.annotation.JsonbProperty;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import javax.validation.constraints.NotNull;
@@ -18,6 +19,7 @@ public class Name {
     @Column(name = "surname", nullable = false, updatable = true, length = 31)
     private String family;
 
+    @JsonbProperty
     public String getTitle() {
         return title;
     }
@@ -26,6 +28,7 @@ public class Name {
         this.title = title;
     }
 
+    @JsonbProperty
     public String getGiven() {
         return given;
     }
@@ -34,6 +37,7 @@ public class Name {
         this.given = given;
     }
 
+    @JsonbProperty
     public String getFamily() {
         return family;
     }

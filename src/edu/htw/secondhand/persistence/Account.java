@@ -1,5 +1,6 @@
 package edu.htw.secondhand.persistence;
 
+import javax.json.bind.annotation.JsonbProperty;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import javax.validation.constraints.NotNull;
@@ -14,6 +15,7 @@ public class Account {
     @Column(nullable = false, updatable = true, length = 11)
     private String bic;
 
+    @JsonbProperty
     public String getIban() {
         return iban;
     }
@@ -22,6 +24,7 @@ public class Account {
         this.iban = iban;
     }
 
+    @JsonbProperty
     public String getBic() {
         return bic;
     }

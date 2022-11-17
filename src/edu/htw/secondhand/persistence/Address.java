@@ -1,5 +1,6 @@
 package edu.htw.secondhand.persistence;
 
+import javax.json.bind.annotation.JsonbProperty;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import javax.validation.constraints.NotNull;
@@ -20,6 +21,7 @@ public class Address {
     @Column(nullable = false, updatable = true, length = 15)
     private String postcode;
 
+    @JsonbProperty
     public String getStreet() {
         return street;
     }
@@ -28,6 +30,7 @@ public class Address {
         this.street = street;
     }
 
+    @JsonbProperty
     public String getCity() {
         return city;
     }
@@ -36,6 +39,7 @@ public class Address {
         this.city = city;
     }
 
+    @JsonbProperty
     public String getCountry() {
         return country;
     }
@@ -44,6 +48,7 @@ public class Address {
         this.country = country;
     }
 
+    @JsonbProperty
     public String getPostcode() {
         return postcode;
     }

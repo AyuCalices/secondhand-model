@@ -77,6 +77,7 @@ public class Person extends BaseEntity {
         this.orders = Collections.emptySet();
     }
 
+    @JsonbProperty
     public String getEmail() {
         return email;
     }
@@ -85,6 +86,7 @@ public class Person extends BaseEntity {
         this.email = email;
     }
 
+    @JsonbProperty
     public String getPasswordHash() {
         return passwordHash;
     }
@@ -93,6 +95,7 @@ public class Person extends BaseEntity {
         this.passwordHash = passwordHash;
     }
 
+    @JsonbProperty
     public Group getGroup() {
         return group;
     }
@@ -101,6 +104,7 @@ public class Person extends BaseEntity {
         this.group = group;
     }
 
+    @JsonbProperty
     public Name getName() {
         return name;
     }
@@ -109,6 +113,7 @@ public class Person extends BaseEntity {
         this.name = name;
     }
 
+    @JsonbProperty
     public Address getAddress() {
         return address;
     }
@@ -117,6 +122,7 @@ public class Person extends BaseEntity {
         this.address = address;
     }
 
+    @JsonbProperty
     public Account getAccount() {
         return account;
     }
@@ -125,6 +131,7 @@ public class Person extends BaseEntity {
         this.account = account;
     }
 
+    @JsonbProperty
     public Set<String> getPhones() {
         return phones;
     }
