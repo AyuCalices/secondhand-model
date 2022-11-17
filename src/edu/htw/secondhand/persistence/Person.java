@@ -1,10 +1,12 @@
 package edu.htw.secondhand.persistence;
 
 import edu.htw.secondhand.util.HashCodes;
+import edu.htw.secondhand.util.JsonProtectedPropertyStrategy;
 import org.eclipse.persistence.annotations.CacheIndex;
 
 import javax.json.bind.annotation.JsonbProperty;
 import javax.json.bind.annotation.JsonbTransient;
+import javax.json.bind.annotation.JsonbVisibility;
 import javax.persistence.*;
 import javax.validation.Valid;
 import javax.validation.constraints.Email;
@@ -20,6 +22,7 @@ import java.util.stream.Collectors;
 @Table(schema = "secondhand", name = "Person")
 @PrimaryKeyJoinColumn(name = "personIdentity")
 @DiscriminatorValue(value = "Person")
+@JsonbVisibility(JsonProtectedPropertyStrategy.class)
 public class Person extends BaseEntity {
 
     static private final String DEFAULT_PASSWORD_HASH = HashCodes.sha2HashText(256, "changeit");

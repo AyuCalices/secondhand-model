@@ -1,6 +1,9 @@
 package edu.htw.secondhand.persistence;
 
+import edu.htw.secondhand.util.JsonProtectedPropertyStrategy;
+
 import javax.json.bind.annotation.JsonbProperty;
+import javax.json.bind.annotation.JsonbVisibility;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import javax.validation.constraints.NotNull;
@@ -8,6 +11,7 @@ import javax.validation.constraints.Size;
 
 @Embeddable
 public class Name {
+@JsonbVisibility(JsonProtectedPropertyStrategy.class)
 
     @Size(max = 15)
     @Column(nullable = true, updatable = true, length = 15)
