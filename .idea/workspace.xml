@@ -2,8 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a82d2df6-f96d-4203-b020-9b64cee8bfdd" name="Changes" comment="after review teamwork -&gt; account, address, article, name">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/edu/htw/secondhand/service/BasicAuthenticationReceiverFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/htw/secondhand/service/BasicAuthenticationReceiverFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/edu/htw/secondhand/persistence/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/htw/secondhand/persistence/Account.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/edu/htw/secondhand/persistence/Address.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/htw/secondhand/persistence/Address.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/edu/htw/secondhand/persistence/Name.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/htw/secondhand/persistence/Name.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/edu/htw/secondhand/persistence/Person.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/htw/secondhand/persistence/Person.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/edu/htw/secondhand/service/PersonService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/htw/secondhand/service/PersonService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -125,7 +130,7 @@
       <workItem from="1668379700733" duration="980000" />
       <workItem from="1668380760871" duration="695000" />
       <workItem from="1668381612058" duration="657000" />
-      <workItem from="1668548740226" duration="16797000" />
+      <workItem from="1668548740226" duration="34343000" />
     </task>
     <task id="LOCAL-00001" summary="added submodule">
       <created>1666474489030</created>

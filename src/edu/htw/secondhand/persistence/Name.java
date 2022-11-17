@@ -8,10 +8,11 @@ import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.util.Comparator;
 
 @Embeddable
-public class Name {
 @JsonbVisibility(JsonProtectedPropertyStrategy.class)
+public class Name implements Comparable<Name> {
 
     @Size(max = 15)
     @Column(nullable = true, updatable = true, length = 15)
@@ -48,5 +49,14 @@ public class Name {
 
     public void setFamily(String family) {
         this.family = family;
+    }
+
+    @Override
+    public int compareTo(Name o) {
+        return Comparator
+                .comparing(Name::getTitle, Comparator.nullsLast(Comparator.naturalOrder()))
+                .thenComparing(Name::getFamily)
+                .thenComparing(Name::getGiven)
+                .compare(this, o);
     }
 }

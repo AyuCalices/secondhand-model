@@ -169,7 +169,13 @@ public class Person extends BaseEntity {
 
     @JsonbProperty
     protected Long getAvatarReference() {
-        return avatar.getIdentity();
+        try {
+            Long identity = avatar.getIdentity();
+            return identity;
+        } catch (Exception err) {
+            return null;
+        }
+//        return avatar.getIdentity() ? avatar.getIdentity() : null;
     }
 
     @JsonbProperty
