@@ -9,7 +9,7 @@ import javax.validation.constraints.Size;
 
 @Entity
 @Table(schema = "secondhand", name = "Document")
-@PrimaryKeyJoinColumn(name = "personIdentity")
+@PrimaryKeyJoinColumn(name = "documentIdentity")
 @DiscriminatorValue(value = "Document")
 public class Document extends BaseEntity {
 
