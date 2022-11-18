@@ -67,7 +67,7 @@ public class BasicAuthenticationReceiverFilter implements ContainerRequestFilter
 		//   to provide HTTP Basic credentials (i.e. status code 401, and "WWW-Authenticate" header value "Basic").
 		//   Note that the alternative of throwing NotAuthorizedException("Basic") comes with the disadvantage that
 		//   failed authentication attempts clutter the server log with stack traces.
-		if (headers.containsKey("Requester-Identity")) {
+		if (headers.containsKey(REQUESTER_IDENTITY)) {
 			throw new ClientErrorException(Status.BAD_REQUEST);
 		}
 		final String textCredentials = headers.remove("Authorization").get(0);
@@ -87,7 +87,7 @@ public class BasicAuthenticationReceiverFilter implements ContainerRequestFilter
 				String password = decodedCredentials.substring(indexOfFirstColon + 1);
 				String passwordHexRepresentation = HashCodes.sha2HashText(256, password);
 				if (passwordHexRepresentation.equals(foundPersons.get(0).getPasswordHash())) {
-					headers.add("Requester-Identity", Long.toString(foundPersons.get(0).getIdentity()));
+					headers.add(REQUESTER_IDENTITY, Long.toString(foundPersons.get(0).getIdentity()));
 					return;
 				}
 			}
