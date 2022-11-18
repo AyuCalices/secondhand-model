@@ -1,10 +1,15 @@
 package edu.htw.secondhand.persistence;
 
+import edu.htw.secondhand.util.JsonProtectedPropertyStrategy;
+
+import javax.json.bind.annotation.JsonbProperty;
+import javax.json.bind.annotation.JsonbVisibility;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @Embeddable
+@JsonbVisibility(JsonProtectedPropertyStrategy.class)
 public class Article {
     @NotNull
     @Enumerated(EnumType.STRING)
@@ -20,6 +25,7 @@ public class Article {
     @Column(nullable = false, updatable = true, length = 4090)
     private String description;
 
+    @JsonbProperty
     public Category getCategory() {
         return category;
     }
@@ -28,6 +34,7 @@ public class Article {
         this.category = category;
     }
 
+    @JsonbProperty
     public String getBrand() {
         return brand;
     }
@@ -36,6 +43,7 @@ public class Article {
         this.brand = brand;
     }
 
+    @JsonbProperty
     public String getAlias() {
         return alias;
     }
@@ -44,6 +52,7 @@ public class Article {
         this.alias = alias;
     }
 
+    @JsonbProperty
     public String getDescription() {
         return description;
     }

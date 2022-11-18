@@ -1,10 +1,12 @@
 package edu.htw.secondhand.persistence;
 
 import edu.htw.secondhand.util.HashCodes;
+import edu.htw.secondhand.util.JsonProtectedPropertyStrategy;
 import org.eclipse.persistence.annotations.CacheIndex;
 
 import javax.json.bind.annotation.JsonbProperty;
 import javax.json.bind.annotation.JsonbTransient;
+import javax.json.bind.annotation.JsonbVisibility;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -13,6 +15,7 @@ import javax.validation.constraints.Size;
 @Table(schema = "secondhand", name = "Document")
 @PrimaryKeyJoinColumn(name = "documentIdentity")
 @DiscriminatorValue(value = "Document")
+@JsonbVisibility(JsonProtectedPropertyStrategy.class)
 public class Document extends BaseEntity {
 
     @NotNull @Size(min = 64, max = 64)
