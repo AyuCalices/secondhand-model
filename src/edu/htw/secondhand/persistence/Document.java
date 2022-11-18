@@ -3,6 +3,8 @@ package edu.htw.secondhand.persistence;
 import edu.htw.secondhand.util.HashCodes;
 import org.eclipse.persistence.annotations.CacheIndex;
 
+import javax.json.bind.annotation.JsonbProperty;
+import javax.json.bind.annotation.JsonbTransient;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -39,6 +41,7 @@ public class Document extends BaseEntity {
         this.hash = hash;
     }
 
+    @JsonbProperty
     public String getType() {
         return type;
     }
@@ -47,6 +50,7 @@ public class Document extends BaseEntity {
         this.type = type;
     }
 
+    @JsonbTransient
     public byte[] getContent() {
         return content;
     }
