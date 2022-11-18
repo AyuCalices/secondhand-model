@@ -3,8 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="a82d2df6-f96d-4203-b020-9b64cee8bfdd" name="Changes" comment="after review teamwork -&gt; account, address, article, name">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/edu/htw/secondhand/persistence/Article.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/htw/secondhand/persistence/Article.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/edu/htw/secondhand/persistence/Document.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/htw/secondhand/persistence/Document.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/edu/htw/secondhand/persistence/BaseEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/htw/secondhand/persistence/BaseEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/edu/htw/secondhand/persistence/Name.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/htw/secondhand/persistence/Name.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/edu/htw/secondhand/persistence/Person.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/htw/secondhand/persistence/Person.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/edu/htw/secondhand/service/PersonService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/htw/secondhand/service/PersonService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -185,6 +187,10 @@
           <line>28</line>
           <option name="timeStamp" value="9" />
         </line-breakpoint>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.ExceptionInInitializerError" package="java.lang" />
+          <option name="timeStamp" value="11" />
+        </breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>

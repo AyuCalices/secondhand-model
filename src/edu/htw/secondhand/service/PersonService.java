@@ -212,6 +212,8 @@ public class PersonService {
         person.getAddress().setPostcode(personTemplate.getAddress().getPostcode());
         person.getAccount().setBic(personTemplate.getAccount().getBic());
         person.getAccount().setIban(personTemplate.getAccount().getIban());
+        person.getPhones().retainAll(personTemplate.getPhones());
+        person.getPhones().addAll(personTemplate.getPhones());
         if (password != null) person.setPasswordHash(HashCodes.sha2HashText(256, password));
         if (avatarReference != null) {
             final Document avatar = entityManager.find(Document.class, avatarReference);

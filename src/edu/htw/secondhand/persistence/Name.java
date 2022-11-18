@@ -52,11 +52,11 @@ public class Name implements Comparable<Name> {
     }
 
     @Override
-    public int compareTo(Name o) {
+    public int compareTo(Name other) {
         return Comparator
                 .comparing(Name::getTitle, Comparator.nullsLast(Comparator.naturalOrder()))
                 .thenComparing(Name::getFamily)
                 .thenComparing(Name::getGiven)
-                .compare(this, o);
+                .compare(this, other);
     }
 }
