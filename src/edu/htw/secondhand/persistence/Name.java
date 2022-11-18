@@ -24,7 +24,7 @@ public class Name implements Comparable<Name> {
     @Column(name = "surname", nullable = false, updatable = true, length = 31)
     private String family;
 
-    @JsonbProperty
+    @JsonbProperty(nillable = true)
     public String getTitle() {
         return title;
     }

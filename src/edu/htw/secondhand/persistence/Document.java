@@ -33,6 +33,7 @@ public class Document extends BaseEntity {
         this.type = "application/octet-stream";
     }
 
+    @JsonbProperty
     public String getHash() {
         return hash;
     }

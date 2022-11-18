@@ -15,6 +15,7 @@ import javax.ws.rs.core.MultivaluedMap;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 import javax.ws.rs.ext.Provider;
+import java.nio.charset.StandardCharsets;
 import java.util.Base64;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -67,31 +68,33 @@ public class BasicAuthenticationReceiverFilter implements ContainerRequestFilter
 		//   to provide HTTP Basic credentials (i.e. status code 401, and "WWW-Authenticate" header value "Basic").
 		//   Note that the alternative of throwing NotAuthorizedException("Basic") comes with the disadvantage that
 		//   failed authentication attempts clutter the server log with stack traces.
-		if (headers.containsKey(REQUESTER_IDENTITY)) {
-			throw new ClientErrorException(Status.BAD_REQUEST);
-		}
-		final String textCredentials = headers.remove("Authorization").get(0);
-		if (textCredentials != null) {
-			String encodedCredentials = textCredentials.substring("Basic".length()).trim();
-			String decodedCredentials = new String(Base64.getDecoder().decode(encodedCredentials));
-			final EntityManager entityManager = RestJpaLifecycleProvider.entityManager("secondhand");
+		if (headers.containsKey(REQUESTER_IDENTITY)) throw new ClientErrorException(Status.BAD_REQUEST);
+		final List<String> headerValues = headers.remove(HttpHeaders.AUTHORIZATION);
+		if (headerValues != null && !headerValues.isEmpty()) {
+			final String textCredentials = headerValues.get(0);
+			final String encodedCredentials = textCredentials.substring("Basic ".length());
+			final byte[] bytes = Base64.getDecoder().decode(encodedCredentials);
+			final String decodedCredentials = new String(bytes, StandardCharsets.ISO_8859_1);
+			final int indexOfFirstColon = decodedCredentials.indexOf(":");
+			final String email = decodedCredentials.substring(0, indexOfFirstColon);
+			final String password = decodedCredentials.substring(indexOfFirstColon + 1);
 
-			final List<Person> foundPersons = entityManager
+			final EntityManager entityManager = RestJpaLifecycleProvider.entityManager("secondhand");
+			final List<Person> people = entityManager
 					.createQuery("SELECT p FROM Person AS p WHERE p.email = :email", Person.class)
-					.setParameter("email", decodedCredentials.split(":")[0])
-					.getResultList()
-					.stream()
-					.collect(Collectors.toList());
-			if (foundPersons.size() == 1) {
-				int indexOfFirstColon = decodedCredentials.indexOf(":");
-				String password = decodedCredentials.substring(indexOfFirstColon + 1);
-				String passwordHexRepresentation = HashCodes.sha2HashText(256, password);
-				if (passwordHexRepresentation.equals(foundPersons.get(0).getPasswordHash())) {
-					headers.add(REQUESTER_IDENTITY, Long.toString(foundPersons.get(0).getIdentity()));
+					.setParameter("email", email)
+					.getResultList();
+
+			if (people.size() == 1) {
+				final String passwordHash = HashCodes.sha2HashText(256, password);
+				final Person requester = people.get(0);
+				if (passwordHash.equals(requester.getPasswordHash())) {
+					headers.add(REQUESTER_IDENTITY, Long.toString(requester.getIdentity()));
 					return;
 				}
 			}
 		}
+
 		final Response response = Response.status(Status.UNAUTHORIZED).header(HttpHeaders.WWW_AUTHENTICATE, "Basic").build();
 		requestContext.abortWith(response);
 	}

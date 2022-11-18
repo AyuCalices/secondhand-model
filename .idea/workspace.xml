@@ -2,12 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a82d2df6-f96d-4203-b020-9b64cee8bfdd" name="Changes" comment="after review teamwork -&gt; account, address, article, name">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/edu/htw/secondhand/persistence/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/htw/secondhand/persistence/Account.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/edu/htw/secondhand/persistence/Address.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/htw/secondhand/persistence/Address.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/edu/htw/secondhand/persistence/Document.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/htw/secondhand/persistence/Document.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/edu/htw/secondhand/persistence/Name.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/htw/secondhand/persistence/Name.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/edu/htw/secondhand/persistence/Offer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/htw/secondhand/persistence/Offer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/edu/htw/secondhand/persistence/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/htw/secondhand/persistence/Order.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/edu/htw/secondhand/persistence/Person.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/htw/secondhand/persistence/Person.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/edu/htw/secondhand/service/BasicAuthenticationReceiverFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/htw/secondhand/service/BasicAuthenticationReceiverFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/edu/htw/secondhand/service/DocumentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/htw/secondhand/service/DocumentService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/edu/htw/secondhand/service/PersonService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/htw/secondhand/service/PersonService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -31,6 +33,11 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="ROOT_SYNC" value="DONT_SYNC" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="jar:///Library/Java/JavaVirtualMachines/jdk-11.0.2.jdk/Contents/Home/lib/src.zip!/java.base/java/util/Comparator.java" root0="SKIP_INSPECTION" />
+    <setting file="jar://$PROJECT_DIR$/../secondhand-model-submodule/server-api-11.0/javax.persistence-2.1.1.jar!/javax/persistence/EntityManager.class" root0="SKIP_INSPECTION" />
+    <setting file="jar://$PROJECT_DIR$/../secondhand-model-submodule/server-api-11.0/javax.persistence-2.1.1.jar!/javax/persistence/TypedQuery.class" root0="SKIP_INSPECTION" />
   </component>
   <component name="JpbToolWindowState">
     <option name="myId2FirstActivated">
@@ -130,7 +137,7 @@
       <workItem from="1668379700733" duration="980000" />
       <workItem from="1668380760871" duration="695000" />
       <workItem from="1668381612058" duration="657000" />
-      <workItem from="1668548740226" duration="34343000" />
+      <workItem from="1668548740226" duration="44699000" />
     </task>
     <task id="LOCAL-00001" summary="added submodule">
       <created>1666474489030</created>
@@ -174,5 +181,21 @@
     <MESSAGE value="added nullable to order fields" />
     <MESSAGE value="final code review task 1 (100%)" />
     <option name="LAST_COMMIT_MESSAGE" value="final code review task 1 (100%)" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/edu/htw/secondhand/service/PersonService.java</url>
+          <line>144</line>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/edu/htw/secondhand/service/PersonService.java</url>
+          <line>173</line>
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

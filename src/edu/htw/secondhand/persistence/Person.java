@@ -86,7 +86,7 @@ public class Person extends BaseEntity {
         this.email = email;
     }
 
-    @JsonbProperty
+    @JsonbTransient
     public String getPasswordHash() {
         return passwordHash;
     }
@@ -169,23 +169,17 @@ public class Person extends BaseEntity {
 
     @JsonbProperty
     protected Long getAvatarReference() {
-        try {
-            Long identity = avatar.getIdentity();
-            return identity;
-        } catch (Exception err) {
-            return null;
-        }
-//        return avatar.getIdentity() ? avatar.getIdentity() : null;
+        return this.avatar == null ? null : this.avatar.getIdentity();
     }
 
     @JsonbProperty
     protected long[] getOfferReferences() {
-        return offers.stream().mapToLong(x -> x.getIdentity()).sorted().toArray();
+        return this.offers.stream().mapToLong(Offer::getIdentity).sorted().toArray();
     }
 
     @JsonbProperty
     protected long[] getOrderReferences() {
-        return orders.stream().mapToLong(x -> x.getIdentity()).sorted().toArray();
+        return this.orders.stream().mapToLong(Order::getIdentity).sorted().toArray();
     }
 
 }

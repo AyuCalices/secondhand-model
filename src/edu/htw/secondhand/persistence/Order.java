@@ -1,7 +1,10 @@
 package edu.htw.secondhand.persistence;
 
+import edu.htw.secondhand.util.JsonProtectedPropertyStrategy;
+
 import javax.json.bind.annotation.JsonbProperty;
 import javax.json.bind.annotation.JsonbTransient;
+import javax.json.bind.annotation.JsonbVisibility;
 import javax.persistence.*;
 import javax.validation.constraints.Size;
 import java.util.Collections;
@@ -12,6 +15,7 @@ import java.util.Set;
 @Table(schema = "secondhand", name = "Purchase")
 @PrimaryKeyJoinColumn(name = "purchaseIdentity")
 @DiscriminatorValue(value = "Purchase")
+@JsonbVisibility(JsonProtectedPropertyStrategy.class)
 public class Order extends BaseEntity {
 
     @Column(nullable = true, updatable = true)
@@ -37,7 +41,7 @@ public class Order extends BaseEntity {
         this.offers = Collections.emptySet();
     }
 
-
+    @JsonbProperty(nillable = true)
     public Long getPayed() {
         return payed;
     }
@@ -46,6 +50,7 @@ public class Order extends BaseEntity {
         this.payed = payed;
     }
 
+    @JsonbProperty(nillable = true)
     public Long getDeparted() {
         return departed;
     }
@@ -54,6 +59,7 @@ public class Order extends BaseEntity {
         this.departed = departed;
     }
 
+    @JsonbProperty(nillable = true)
     public Long getArrived() {
         return arrived;
     }
@@ -62,6 +68,7 @@ public class Order extends BaseEntity {
         this.arrived = arrived;
     }
 
+    @JsonbProperty(nillable = true)
     public String getTrackingReference() {
         return trackingReference;
     }
@@ -90,16 +97,16 @@ public class Order extends BaseEntity {
 
     @JsonbProperty
     protected long[] getOfferReferences() {
-        return offers.stream().mapToLong(x -> x.getIdentity()).sorted().toArray();
+        return offers.stream().mapToLong(Offer::getIdentity).sorted().toArray();
     }
 
-    @JsonbProperty
+    @JsonbProperty(nillable = true)
     protected Long getBuyerReference() {
-        return buyer.getIdentity();
+        return this.buyer == null ? null : this.buyer.getIdentity();
     }
 
-    @JsonbProperty
+    @JsonbProperty(nillable = true)
     protected Long getSellerReference() {
-        return offers.stream().mapToLong(x -> x.getSellerReference()).sorted().toArray()[0];
+        return this.offers.stream().map(Offer::getSellerReference).findFirst().orElse(null);
     }
 }

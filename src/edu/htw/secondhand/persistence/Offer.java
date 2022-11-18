@@ -1,7 +1,10 @@
 package edu.htw.secondhand.persistence;
 
+import edu.htw.secondhand.util.JsonProtectedPropertyStrategy;
+
 import javax.json.bind.annotation.JsonbProperty;
 import javax.json.bind.annotation.JsonbTransient;
+import javax.json.bind.annotation.JsonbVisibility;
 import javax.persistence.*;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
@@ -12,6 +15,7 @@ import javax.validation.constraints.Size;
 @Table(schema = "secondhand", name = "Offer")
 @PrimaryKeyJoinColumn(name="offerIdentity")
 @DiscriminatorValue(value = "Offer")
+@JsonbVisibility(JsonProtectedPropertyStrategy.class)
 public class Offer extends BaseEntity{
 
     @NotNull @Valid
@@ -43,10 +47,12 @@ public class Offer extends BaseEntity{
         this.seller = seller;
     }
 
+    @JsonbProperty
     public Article getArticle() { return article; }
 
     protected void setArticle(Article article) { this.article = article; }
 
+    @JsonbProperty(nillable = true)
     public String getSerial() {
         return serial;
     }
@@ -55,6 +61,7 @@ public class Offer extends BaseEntity{
         this.serial = serial;
     }
 
+    @JsonbProperty
     public long getPrice() {
         return price;
     }
@@ -63,6 +70,7 @@ public class Offer extends BaseEntity{
         this.price = price;
     }
 
+    @JsonbProperty
     public long getPostage() {
         return postage;
     }
@@ -100,16 +108,16 @@ public class Offer extends BaseEntity{
 
     @JsonbProperty
     protected Long getAvatarReference() {
-        return avatar.getIdentity();
+        return this.avatar == null ? null : this.avatar.getIdentity();
     }
 
     @JsonbProperty
     protected Long getSellerReference() {
-        return seller.getIdentity();
+        return this.seller == null ? null : this.seller.getIdentity();
     }
 
-    @JsonbProperty
+    @JsonbProperty(nillable = true)
     protected Long getOrderReference() {
-        return order.getIdentity();
+        return this.order == null ? null : this.order.getIdentity();
     }
 }
