@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a82d2df6-f96d-4203-b020-9b64cee8bfdd" name="Changes" comment="after review teamwork -&gt; account, address, article, name">
+    <list default="true" id="a82d2df6-f96d-4203-b020-9b64cee8bfdd" name="Changes" comment="implemented offer service">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/236ea17a-ff3a-4231-a982-ab43541ca2f4.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/edu/htw/secondhand/persistence/BaseEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/htw/secondhand/persistence/BaseEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/edu/htw/secondhand/persistence/Name.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/htw/secondhand/persistence/Name.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/edu/htw/secondhand/persistence/Person.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/htw/secondhand/persistence/Person.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/edu/htw/secondhand/service/PersonService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/htw/secondhand/service/PersonService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/secondhand-model.eml" beforeDir="false" afterPath="$PROJECT_DIR$/secondhand-model.eml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/secondhand-model.iml" beforeDir="false" afterPath="$PROJECT_DIR$/secondhand-model.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/edu/htw/secondhand/service/OfferService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/htw/secondhand/service/OfferService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/edu/htw/secondhand/service/OrderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/htw/secondhand/service/OrderService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,10 +34,10 @@
     <option name="ROOT_SYNC" value="DONT_SYNC" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="jar:///Library/Java/JavaVirtualMachines/jdk-11.0.2.jdk/Contents/Home/lib/src.zip!/java.base/java/util/Comparator.java" root0="SKIP_INSPECTION" />
     <setting file="jar://$PROJECT_DIR$/../secondhand-model-submodule/server-api-11.0/javax.persistence-2.1.1.jar!/javax/persistence/EntityManager.class" root0="SKIP_INSPECTION" />
     <setting file="jar://$PROJECT_DIR$/../secondhand-model-submodule/server-api-11.0/javax.persistence-2.1.1.jar!/javax/persistence/TypedQuery.class" root0="SKIP_INSPECTION" />
     <setting file="jar://$PROJECT_DIR$/../secondhand-model-submodule/server-api-11.0/javax.ws.rs-api-2.1.jar!/javax/ws/rs/container/ContainerRequestFilter.class" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/edu/htw/secondhand/service/BasicAuthenticationSenderFilter.java" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="JpbToolWindowState">
     <option name="myId2FirstActivated">
@@ -135,6 +138,9 @@
       <workItem from="1668380760871" duration="695000" />
       <workItem from="1668381612058" duration="657000" />
       <workItem from="1668548740226" duration="44699000" />
+      <workItem from="1668952167274" duration="3720000" />
+      <workItem from="1668972948780" duration="1606000" />
+      <workItem from="1669253531099" duration="1704000" />
     </task>
     <task id="LOCAL-00001" summary="added submodule">
       <created>1666474489030</created>
@@ -187,10 +193,6 @@
           <line>28</line>
           <option name="timeStamp" value="9" />
         </line-breakpoint>
-        <breakpoint enabled="true" type="java-exception">
-          <properties class="java.lang.ExceptionInInitializerError" package="java.lang" />
-          <option name="timeStamp" value="11" />
-        </breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
