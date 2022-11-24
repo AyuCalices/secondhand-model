@@ -2,9 +2,12 @@ package edu.htw.secondhand.service;
 
 import edu.htw.secondhand.persistence.Document;
 import edu.htw.secondhand.persistence.Person;
+import edu.htw.secondhand.util.HashCodes;
 import edu.htw.secondhand.util.RestJpaLifecycleProvider;
 
 import javax.persistence.EntityManager;
+import javax.persistence.RollbackException;
+import javax.persistence.TypedQuery;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Positive;
 import javax.validation.constraints.PositiveOrZero;
@@ -15,10 +18,13 @@ import javax.ws.rs.core.Response;
 import static edu.htw.secondhand.service.BasicAuthenticationReceiverFilter.REQUESTER_IDENTITY;
 import static javax.ws.rs.core.MediaType.APPLICATION_JSON;
 import static javax.ws.rs.core.MediaType.TEXT_PLAIN;
+import static javax.ws.rs.core.Response.Status.CONFLICT;
 import static javax.ws.rs.core.Response.Status.NOT_FOUND;
 
 @Path("documents")
 public class DocumentService {
+
+    private static final String QUERY_DOCUMENT = "SELECT d FROM Document AS d WHERE d.hash = :hash";
 
     @GET
     @Path("{id}")
@@ -65,12 +71,38 @@ public class DocumentService {
     }
 
     @POST
+    @Consumes("*/*")
+    @Produces(TEXT_PLAIN)
     public Long createOrUpdateDocument(
-        @HeaderParam(REQUESTER_IDENTITY) @Positive final long requesterIdentity,
-        @HeaderParam("Content-Type") @NotNull final String documentType,
+        @HeaderParam("Content-Type") @NotNull final String documentContentType,
         @NotNull final byte[] documentContent
     ) {
-        return Long.getLong("7");
+        final EntityManager entityManager = RestJpaLifecycleProvider.entityManager("secondhand");
+        final TypedQuery<Document> query = entityManager.createQuery(QUERY_DOCUMENT, Document.class);
+        final String contentHash = HashCodes.sha2HashText(256, documentContent);
+        final Document document = query
+                .setParameter("hash", contentHash)
+                .getResultList()
+                .stream()
+                .findAny()
+                .orElseGet(() -> new Document(documentContent));
+
+        document.setType(documentContentType);
+
+        if(document.getIdentity() == 0)
+            entityManager.persist(document);
+        else
+            entityManager.flush();
+
+        try {
+            entityManager.getTransaction().commit();
+        } catch (final RollbackException e) {
+            throw new ClientErrorException(CONFLICT);
+        } finally {
+            entityManager.getTransaction().begin();
+        }
+
+        return document.getIdentity();
     }
 
 }
