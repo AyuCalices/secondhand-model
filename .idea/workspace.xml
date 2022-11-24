@@ -3,10 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="a82d2df6-f96d-4203-b020-9b64cee8bfdd" name="Changes" comment="after review teamwork -&gt; account, address, article, name">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/edu/htw/secondhand/persistence/BaseEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/htw/secondhand/persistence/BaseEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/edu/htw/secondhand/persistence/Name.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/htw/secondhand/persistence/Name.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/edu/htw/secondhand/persistence/Person.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/htw/secondhand/persistence/Person.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/edu/htw/secondhand/service/PersonService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/htw/secondhand/service/PersonService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,22 +57,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;11&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/christopherknapp/git/secondhand-model/src/edu/htw/secondhand/service&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "jdk.selected.JAVA_MODULE": "11",
+    "last_opened_file_path": "/Users/christopherknapp/git/secondhand-model/src/edu/htw/secondhand/service",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "run.code.analysis.last.selected.profile": "pProject Default",
+    "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/edu/htw/secondhand/service" />
@@ -135,6 +131,7 @@
       <workItem from="1668380760871" duration="695000" />
       <workItem from="1668381612058" duration="657000" />
       <workItem from="1668548740226" duration="44699000" />
+      <workItem from="1669328928542" duration="13000" />
     </task>
     <task id="LOCAL-00001" summary="added submodule">
       <created>1666474489030</created>
@@ -174,6 +171,9 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
+    <ignored-roots>
+      <path value="$PROJECT_DIR$/secondhand-model-submodule" />
+    </ignored-roots>
     <MESSAGE value="added submodule" />
     <MESSAGE value="added nullable to order fields" />
     <MESSAGE value="final code review task 1 (100%)" />
