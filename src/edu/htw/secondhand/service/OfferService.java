@@ -3,6 +3,7 @@ package edu.htw.secondhand.service;
 import edu.htw.secondhand.persistence.*;
 import edu.htw.secondhand.util.RestJpaLifecycleProvider;
 
+import javax.persistence.Cache;
 import javax.persistence.EntityManager;
 import javax.persistence.RollbackException;
 import javax.persistence.TypedQuery;
@@ -22,26 +23,22 @@ import static javax.ws.rs.core.Response.Status.*;
 @Path("offers")
 public class OfferService {
 
-    static private final String QUERY_OFFER = "SELECT p.identity FROM Offer AS p WHERE "
-            + "(:lowerCreationTimestamp is null or p.created >= :lowerCreationTimestamp) AND "
-            + "(:upperCreationTimestamp is null or p.created <= :upperCreationTimestamp) AND "
-            + "(:lowerModificationTimestamp is null or p.modified >= :lowerModificationTimestamp) AND "
-            + "(:upperModificationTimestamp is null or p.modified <= :upperModificationTimestamp) AND "
+    static private final String QUERY_OFFER = "SELECT o.identity FROM Offer AS o WHERE "
+            + "(:lowerCreationTimestamp is null or o.created >= :lowerCreationTimestamp) AND "
+            + "(:upperCreationTimestamp is null or o.created <= :upperCreationTimestamp) AND "
+            + "(:lowerModificationTimestamp is null or o.modified >= :lowerModificationTimestamp) AND "
+            + "(:upperModificationTimestamp is null or o.modified <= :upperModificationTimestamp) AND "
 
-            + "(:category is null or p.article.category = :category) AND "
-            + "(:brand is null or p.article.brand = :brand) AND "
-            + "(:alias is null or p.article.alias = :alias) AND "
-            + "(:description is null or p.article.description = :description) AND "
+            + "(:category is null or o.article.category = :category) AND "
+            + "(:brand is null or o.article.brand = :brand) AND "
+            + "(:alias is null or o.article.alias = :alias) AND "
+            + "(:description is null or o.article.description LIKE :description) AND "
 
-            + "(:serial is null or p.serial = :serial) AND "
-            + "(:price is null or p.price = :price) AND "
-            + "(:postage is null or p.postage = :postage) AND "
-
-            + "(:sellerReference is null or p.sellerReference = :sellerReference) AND "
-            + "(:orderReference is null or p.orderReference = :orderReference)";
-
-    static private final Comparator<Offer> OFFER_COMPARATOR = Comparator
-            .comparing(Offer::getIdentity);
+            + "(:serial is null or o.serial = :serial) AND "
+            + "(:lowerPrice is null or o.price >= :lowerPrice) AND "
+            + "(:upperPrice is null or o.price <= :upperPrice) AND "
+            + "(:lowerPostage is null or o.postage >= :lowerPostage) AND "
+            + "(:upperPostage is null or o.postage <= :upperPostage)";
 
     @GET
     @Produces(APPLICATION_JSON)
@@ -59,11 +56,10 @@ public class OfferService {
             @QueryParam("description") final String description,
 
             @QueryParam("serial") final String serial,
-            @QueryParam("price") final long price,
-            @QueryParam("postage") final long postage,
-
-            @QueryParam("sellerReference") final long sellerReference,
-            @QueryParam("orderReference") final long orderReference
+            @QueryParam("lowerPrice") final long lowerPrice,
+            @QueryParam("upperPrice") final long upperPrice,
+            @QueryParam("lowerPostage") final long lowerPostage,
+            @QueryParam("upperPostage") final long upperPostage
     ){
         final EntityManager entityManager = RestJpaLifecycleProvider.entityManager("secondhand");
 
@@ -79,20 +75,17 @@ public class OfferService {
                 .setParameter("category", category)
                 .setParameter("brand", brand)
                 .setParameter("alias", alias)
-                .setParameter("description", description)
-
+                .setParameter("description", description == null ? null : "%" + description + "%")
                 .setParameter("serial", serial)
-                .setParameter("price", price)
-                .setParameter("postage", postage)
-
-                .setParameter("sellerReference", sellerReference)
-                .setParameter("orderReference", orderReference)
-
+                .setParameter("lowerPrice", lowerPrice)
+                .setParameter("upperPrice", upperPrice)
+                .setParameter("lowerPostage", lowerPostage)
+                .setParameter("upperPostage", upperPostage)
                 .getResultList()
                 .stream()
                 .map(identity -> entityManager.find(Offer.class, identity))
                 .filter(offer -> offer != null)
-                .sorted(OFFER_COMPARATOR)
+                .sorted()
                 .toArray(Offer[]::new);
 
         return offers;
@@ -104,16 +97,13 @@ public class OfferService {
     public long postOffer(
             @HeaderParam(REQUESTER_IDENTITY) @Positive final long requesterIdentity,
             @QueryParam("avatarReference") @Positive Long avatarReference,
-            @NotNull @Valid Offer offerTemplate
+            @NotNull @Valid final Offer offerTemplate
     ) {
         final EntityManager entityManager = RestJpaLifecycleProvider.entityManager("secondhand");
         final Person requester = entityManager.find(Person.class, requesterIdentity);
-        if (requester == null) throw new ClientErrorException(FORBIDDEN);
+        if (requester == null || requester.getGroup() == Group.ADMIN) throw new ClientErrorException(FORBIDDEN);
 
         final boolean insertMode = offerTemplate.getIdentity() == 0;
-        boolean isRequesterAdmin = requester.getGroup() == Group.ADMIN;
-
-        if (isRequesterAdmin) throw new ClientErrorException(FORBIDDEN);
 
         final Offer offer;
         if (insertMode) {
@@ -124,11 +114,11 @@ public class OfferService {
             if (offer == null) throw new ClientErrorException(NOT_FOUND);
         }
 
+        offer.setModified(System.currentTimeMillis());
         offer.setVersion(offerTemplate.getVersion());
-        offer.setOrder(offerTemplate.getOrder());
-        offer.setPostage(offerTemplate.getPostage());
         offer.setSerial(offerTemplate.getSerial());
         offer.setPrice(offerTemplate.getPrice());
+        offer.setPostage(offerTemplate.getPostage());
         offer.getArticle().setAlias(offerTemplate.getArticle().getAlias());
         offer.getArticle().setBrand(offerTemplate.getArticle().getBrand());
         offer.getArticle().setCategory(offerTemplate.getArticle().getCategory());
@@ -151,8 +141,9 @@ public class OfferService {
         } finally {
             entityManager.getTransaction().begin();
         }
-        // MERKE: wenn sich Spiegelrelationen verändern, muss
-        // die betroffene Entität aus dem second level cache entfernt werden
+
+        final Cache cache = entityManager.getEntityManagerFactory().getCache();
+        cache.evict(Person.class, requester.getIdentity());
         return offer.getIdentity();
     }
 
@@ -162,13 +153,10 @@ public class OfferService {
     public Offer findOffers(
             @PathParam("id") @Positive long offerIdentity
     ) {
-        EntityManager entityManager = RestJpaLifecycleProvider.entityManager("secondhand");
-        Offer offer = entityManager.find(Offer.class, offerIdentity);
-        if (offer == null) {
-            throw new ClientErrorException(Response.Status.NOT_FOUND);
-        } else {
-            return offer;
-        }
+        final EntityManager entityManager = RestJpaLifecycleProvider.entityManager("secondhand");
+        final Offer offer = entityManager.find(Offer.class, offerIdentity);
+        if (offer == null) throw new ClientErrorException(NOT_FOUND);
+        return offer;
     }
 
     @GET
@@ -179,7 +167,8 @@ public class OfferService {
     ) {
         EntityManager entityManager = RestJpaLifecycleProvider.entityManager("secondhand");
         Offer offer = entityManager.find(Offer.class, offerIdentity);
-        if (offer == null) throw new ClientErrorException(Response.Status.NOT_FOUND);
+        if (offer == null) throw new ClientErrorException(NOT_FOUND);
+        if (!offer.getAvatar().getType().startsWith("image/")) throw new ClientErrorException(NOT_ACCEPTABLE);
 
         return Response.ok(offer.getAvatar().getContent(), offer.getAvatar().getType()).build();
     }
@@ -190,13 +179,11 @@ public class OfferService {
     public Person findOfferSeller(
             @PathParam("id") @Positive long offerIdentity
     ) {
-        EntityManager entityManager = RestJpaLifecycleProvider.entityManager("secondhand");
-        Offer offer = entityManager.find(Offer.class, offerIdentity);
-        if (offer == null) {
-            throw new ClientErrorException(Response.Status.NOT_FOUND);
-        } else {
-            return offer.getSeller();
-        }
+        final EntityManager entityManager = RestJpaLifecycleProvider.entityManager("secondhand");
+        final Offer offer = entityManager.find(Offer.class, offerIdentity);
+        if (offer == null) throw new ClientErrorException(NOT_FOUND);
+
+        return offer.getSeller();
     }
 
     @GET
@@ -207,32 +194,36 @@ public class OfferService {
     ) {
         EntityManager entityManager = RestJpaLifecycleProvider.entityManager("secondhand");
         Offer offer = entityManager.find(Offer.class, offerIdentity);
-        if (offer == null) {
-            return null;
-        } else {
-            return offer.getOrder();
-        }
+        if (offer == null) throw new ClientErrorException(NOT_FOUND);
+
+        return offer.getOrder();
     }
 
     @DELETE
     @Path("{id}")
-    public void deleteOffer(
-            @PathParam("id") @Positive long offerIdentity,
-            @HeaderParam(REQUESTER_IDENTITY) @Positive long requesterIdentity
+    @Produces(TEXT_PLAIN)
+    public long deleteOffer(
+            @HeaderParam(REQUESTER_IDENTITY) @Positive final long requesterIdentity,
+            @PathParam("id") @Positive final long offerIdentity
     ) {
-        EntityManager entityManager = RestJpaLifecycleProvider.entityManager("secondhand");
-        Person requester = entityManager.find(Person.class, requesterIdentity);
-        if (requester == null) {
-            throw new ClientErrorException(Response.Status.NOT_FOUND);
-        } else {
-            Offer offer = entityManager.find(Offer.class, offerIdentity);
-            if (offer == null) {
-                throw new ClientErrorException(Response.Status.NOT_FOUND);
-            } else if ((offer.getOrder() == null && offer.getSeller().getIdentity() == requesterIdentity) || requester.getGroup() == Group.ADMIN) {
-                entityManager.remove(offer);
-            } else {
-                throw new ClientErrorException(Response.Status.FORBIDDEN);
-            }
+        final EntityManager entityManager = RestJpaLifecycleProvider.entityManager("secondhand");
+        final Offer offer = entityManager.find(Offer.class, offerIdentity);
+        if (offer == null) throw new ClientErrorException(NOT_FOUND);
+
+        final Person requester = entityManager.find(Person.class, requesterIdentity);
+        if (requester == null || (requester.getGroup() != Group.ADMIN && offer.getOrder() != null)) throw new ClientErrorException(FORBIDDEN);
+
+        entityManager.remove(offer);
+
+        try {
+            entityManager.getTransaction().commit();
+        } finally {
+            entityManager.getTransaction().begin();
         }
+
+        final Cache cache = entityManager.getEntityManagerFactory().getCache();
+        cache.evict(Person.class, offer.getSeller().getIdentity());
+
+        return offer.getIdentity();
     }
 }

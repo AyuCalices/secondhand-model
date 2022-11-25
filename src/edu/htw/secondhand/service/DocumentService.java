@@ -71,7 +71,7 @@ public class DocumentService {
     }
 
     @POST
-    @Consumes("*/*")
+    @Consumes({ TEXT_PLAIN, "application/pdf", "image/*", "audio/*", "video/*" })
     @Produces(TEXT_PLAIN)
     public Long createOrUpdateDocument(
         @HeaderParam("Content-Type") @NotNull final String documentContentType,

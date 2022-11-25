@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a82d2df6-f96d-4203-b020-9b64cee8bfdd" name="Changes" comment="merge">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Changes6.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Changes6.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Changes7.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Changes7.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/edu/htw/secondhand/persistence/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/htw/secondhand/persistence/Order.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/edu/htw/secondhand/service/OfferService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/htw/secondhand/service/OfferService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/edu/htw/secondhand/service/OrderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/htw/secondhand/service/OrderService.java" afterDir="false" />
     </list>
@@ -31,6 +30,7 @@
     <option name="ROOT_SYNC" value="DONT_SYNC" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="jar:///Library/Java/JavaVirtualMachines/jdk-11.0.2.jdk/Contents/Home/lib/src.zip!/java.base/java/util/Comparator.java" root0="SKIP_INSPECTION" />
     <setting file="jar://$PROJECT_DIR$/../secondhand-model-submodule/server-api-11.0/javax.persistence-2.1.1.jar!/javax/persistence/EntityManager.class" root0="SKIP_INSPECTION" />
     <setting file="jar://$PROJECT_DIR$/../secondhand-model-submodule/server-api-11.0/javax.persistence-2.1.1.jar!/javax/persistence/TypedQuery.class" root0="SKIP_INSPECTION" />
     <setting file="jar://$PROJECT_DIR$/../secondhand-model-submodule/server-api-11.0/javax.ws.rs-api-2.1.jar!/javax/ws/rs/container/ContainerRequestFilter.class" root0="SKIP_INSPECTION" />

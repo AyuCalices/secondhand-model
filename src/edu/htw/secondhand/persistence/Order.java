@@ -106,7 +106,7 @@ public class Order extends BaseEntity {
     }
 
     @JsonbProperty(nillable = true)
-    protected Long getSellerReference() {
+    public Long getSellerReference() {
         return this.offers.stream().map(Offer::getSellerReference).findFirst().orElse(null);
     }
 }
