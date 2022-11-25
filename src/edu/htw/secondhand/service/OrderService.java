@@ -16,15 +16,18 @@ import javax.ws.rs.core.Response;
 import java.util.Set;
 
 import static edu.htw.secondhand.service.BasicAuthenticationReceiverFilter.REQUESTER_IDENTITY;
+import static javax.ws.rs.core.MediaType.APPLICATION_JSON;
+import static javax.ws.rs.core.MediaType.TEXT_PLAIN;
 import static javax.ws.rs.core.Response.Status.*;
 
 @Path("order")
 public class OrderService {
 
     @GET
+    @Produces(TEXT_PLAIN)
     public long postOrder(
             @HeaderParam(REQUESTER_IDENTITY) @Positive final long requesterIdentity,
-            @QueryParam("avatarReference") @Positive Long avatarReference,
+            @QueryParam("offerReference") @Positive Long offerReference,
             @NotNull @Valid Order orderTemplate
     ) {
         final EntityManager entityManager = RestJpaLifecycleProvider.entityManager("secondhand");
@@ -39,7 +42,6 @@ public class OrderService {
         final Order order;
         if (insertMode) {
             order = new Order(requester);
-            if (avatarReference == null) avatarReference = 1L;
         } else {
             order = entityManager.find(Order.class, orderTemplate.getIdentity());
             if (order == null) throw new ClientErrorException(NOT_FOUND);
@@ -69,7 +71,10 @@ public class OrderService {
 
     @GET
     @Path("{id}")
-    public Order getOrders(@PathParam("id") @Positive long orderIdentity) {
+    @Produces(APPLICATION_JSON)
+    public Order getOrders(
+            @PathParam("id") @Positive long orderIdentity
+    ) {
         EntityManager entityManager = RestJpaLifecycleProvider.entityManager("secondhand");
         Order order = entityManager.find(Order.class, orderIdentity);
         if (order == null) {
@@ -81,7 +86,10 @@ public class OrderService {
 
     @GET
     @Path("{id}/buyer")
-    public Person findOrderBuyer(@PathParam("id") @Positive long orderIdentity) {
+    @Produces(APPLICATION_JSON)
+    public Person findOrderBuyer(
+            @PathParam("id") @Positive long orderIdentity
+    ) {
         EntityManager entityManager = RestJpaLifecycleProvider.entityManager("secondhand");
         Order order = entityManager.find(Order.class, orderIdentity);
         if (order == null) {
@@ -93,7 +101,10 @@ public class OrderService {
 
     @GET
     @Path("{id}/seller")
-    public Person findOrderSeller(@PathParam("id") @Positive long orderIdentity) {
+    @Produces(APPLICATION_JSON)
+    public Person findOrderSeller(
+            @PathParam("id") @Positive long orderIdentity
+    ) {
         EntityManager entityManager = RestJpaLifecycleProvider.entityManager("secondhand");
         Order order = entityManager.find(Order.class, orderIdentity);
         if (order == null) {
@@ -105,19 +116,25 @@ public class OrderService {
 
     @GET
     @Path("{id}/offers")
-    public Set<Offer> findOrderOffer(@PathParam("id") @Positive long orderIdentity) {
+    @Produces(APPLICATION_JSON)
+    public Offer[] findOrderOffer(
+            @PathParam("id") @Positive long orderIdentity
+    ) {
         EntityManager entityManager = RestJpaLifecycleProvider.entityManager("secondhand");
         Order order = entityManager.find(Order.class, orderIdentity);
         if (order == null) {
             return null;
         } else {
-            return order.getOffers();
+            return order.getOffers().stream().toArray(Offer[]::new);
         }
     }
 
     @DELETE
     @Path("{id}")
-    public void deleteOrder(@PathParam("id") @Positive long orderIdentity, @HeaderParam("X-Requester-Identity") @Positive long requesterIdentity) {
+    public void deleteOrder(
+            @PathParam("id") @Positive long orderIdentity,
+            @HeaderParam(REQUESTER_IDENTITY) @Positive long requesterIdentity
+    ) {
         EntityManager entityManager = RestJpaLifecycleProvider.entityManager("secondhand");
         Person requester = entityManager.find(Person.class, requesterIdentity);
         if (requester == null) {

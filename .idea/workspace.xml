@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a82d2df6-f96d-4203-b020-9b64cee8bfdd" name="Changes" comment="implemented offer service">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/236ea17a-ff3a-4231-a982-ab43541ca2f4.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="a82d2df6-f96d-4203-b020-9b64cee8bfdd" name="Changes" comment="merge">
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Changes6.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Changes6.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Changes7.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Changes7.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/secondhand-model.eml" beforeDir="false" afterPath="$PROJECT_DIR$/secondhand-model.eml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/secondhand-model.iml" beforeDir="false" afterPath="$PROJECT_DIR$/secondhand-model.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/edu/htw/secondhand/service/OfferService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/htw/secondhand/service/OfferService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/edu/htw/secondhand/service/OrderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/htw/secondhand/service/OrderService.java" afterDir="false" />
     </list>
@@ -156,7 +153,21 @@
       <option name="project" value="LOCAL" />
       <updated>1666964254728</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="added fist order post">
+      <created>1669385281561</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1669385281561</updated>
+    </task>
+    <task id="LOCAL-00004" summary="merge">
+      <created>1669385437309</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1669385437309</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -183,7 +194,9 @@
     <MESSAGE value="added submodule" />
     <MESSAGE value="added nullable to order fields" />
     <MESSAGE value="final code review task 1 (100%)" />
-    <option name="LAST_COMMIT_MESSAGE" value="final code review task 1 (100%)" />
+    <MESSAGE value="added fist order post" />
+    <MESSAGE value="merge" />
+    <option name="LAST_COMMIT_MESSAGE" value="merge" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

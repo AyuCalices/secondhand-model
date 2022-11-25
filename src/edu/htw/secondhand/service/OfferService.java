@@ -37,18 +37,14 @@ public class OfferService {
             + "(:price is null or p.price = :price) AND "
             + "(:postage is null or p.postage = :postage) AND "
 
-            + "(:hash is null or p.avatar.hash = :hash) AND"
-            + "(:type is null or p.avatar.type = :type) AND"
-
-            + "(:payed is null or p.order.payed = :payed) AND"
-            + "(:departed is null or p.order.departed = :departed) AND"
-            + "(:arrived is null or p.order.arrived = :arrived) AND"
-            + "(:trackingReference is null or p.order.trackingReference = :trackingReference)";
+            + "(:sellerReference is null or p.sellerReference = :sellerReference) AND "
+            + "(:orderReference is null or p.orderReference = :orderReference)";
 
     static private final Comparator<Offer> OFFER_COMPARATOR = Comparator
             .comparing(Offer::getIdentity);
 
     @GET
+    @Produces(APPLICATION_JSON)
     public Offer[] findOffer(
             @QueryParam("resultOffset") @PositiveOrZero final Integer resultOffset,
             @QueryParam("resultLimit") @PositiveOrZero final Integer resultLimit,
@@ -56,6 +52,7 @@ public class OfferService {
             @QueryParam("upperCreationTimestamp") final Long upperCreationTimestamp,
             @QueryParam("lowerModificationTimestamp") final Long lowerModificationTimestamp,
             @QueryParam("upperModificationTimestamp") final Long upperModificationTimestamp,
+
             @QueryParam("category") final Category category,
             @QueryParam("brand") final String brand,
             @QueryParam("alias") final String alias,
@@ -65,13 +62,8 @@ public class OfferService {
             @QueryParam("price") final long price,
             @QueryParam("postage") final long postage,
 
-            @QueryParam("hash") final String hash,
-            @QueryParam("type") final String type,
-
-            @QueryParam("payed") final Long payed,
-            @QueryParam("departed") final Long departed,
-            @QueryParam("arrived") final Long arrived,
-            @QueryParam("trackingReference") final String trackingReference
+            @QueryParam("sellerReference") final long sellerReference,
+            @QueryParam("orderReference") final long orderReference
     ){
         final EntityManager entityManager = RestJpaLifecycleProvider.entityManager("secondhand");
 
@@ -93,13 +85,8 @@ public class OfferService {
                 .setParameter("price", price)
                 .setParameter("postage", postage)
 
-                .setParameter("hash", hash)
-                .setParameter("type", type)
-
-                .setParameter("payed", payed)
-                .setParameter("departed", departed)
-                .setParameter("arrived", arrived)
-                .setParameter("trackingReference", trackingReference)
+                .setParameter("sellerReference", sellerReference)
+                .setParameter("orderReference", orderReference)
 
                 .getResultList()
                 .stream()
@@ -112,8 +99,8 @@ public class OfferService {
     }
 
     @POST
-    @Consumes(APPLICATION_JSON)
     @Produces(TEXT_PLAIN)
+    @Consumes(APPLICATION_JSON)
     public long postOffer(
             @HeaderParam(REQUESTER_IDENTITY) @Positive final long requesterIdentity,
             @QueryParam("avatarReference") @Positive Long avatarReference,
@@ -167,7 +154,10 @@ public class OfferService {
 
     @GET
     @Path("{id}")
-    public Offer findOffers(@PathParam("id") @Positive long offerIdentity) {
+    @Produces(APPLICATION_JSON)
+    public Offer findOffers(
+            @PathParam("id") @Positive long offerIdentity
+    ) {
         EntityManager entityManager = RestJpaLifecycleProvider.entityManager("secondhand");
         Offer offer = entityManager.find(Offer.class, offerIdentity);
         if (offer == null) {
@@ -180,7 +170,9 @@ public class OfferService {
     @GET
     @Path("{id}/avatar")
     @Produces("image/*")
-    public Response findOfferAvatar(@PathParam("id") @Positive long offerIdentity) {
+    public Response findOfferAvatar(
+            @PathParam("id") @Positive long offerIdentity
+    ) {
         EntityManager entityManager = RestJpaLifecycleProvider.entityManager("secondhand");
         Offer offer = entityManager.find(Offer.class, offerIdentity);
         if (offer == null) throw new ClientErrorException(Response.Status.NOT_FOUND);
@@ -190,7 +182,10 @@ public class OfferService {
 
     @GET
     @Path("{id}/seller")
-    public Person findOfferSeller(@PathParam("id") @Positive long offerIdentity) {
+    @Produces(APPLICATION_JSON)
+    public Person findOfferSeller(
+            @PathParam("id") @Positive long offerIdentity
+    ) {
         EntityManager entityManager = RestJpaLifecycleProvider.entityManager("secondhand");
         Offer offer = entityManager.find(Offer.class, offerIdentity);
         if (offer == null) {
@@ -202,7 +197,10 @@ public class OfferService {
 
     @GET
     @Path("{id}/order")
-    public Order findOfferOrder(@PathParam("id") @Positive long offerIdentity) {
+    @Produces(APPLICATION_JSON)
+    public Order findOfferOrder(
+            @PathParam("id") @Positive long offerIdentity
+    ) {
         EntityManager entityManager = RestJpaLifecycleProvider.entityManager("secondhand");
         Offer offer = entityManager.find(Offer.class, offerIdentity);
         if (offer == null) {
@@ -214,7 +212,10 @@ public class OfferService {
 
     @DELETE
     @Path("{id}")
-    public void deleteOffer(@PathParam("id") @Positive long offerIdentity, @HeaderParam("X-Requester-Identity") @Positive long requesterIdentity) {
+    public void deleteOffer(
+            @PathParam("id") @Positive long offerIdentity,
+            @HeaderParam(REQUESTER_IDENTITY) @Positive long requesterIdentity
+    ) {
         EntityManager entityManager = RestJpaLifecycleProvider.entityManager("secondhand");
         Person requester = entityManager.find(Person.class, requesterIdentity);
         if (requester == null) {
