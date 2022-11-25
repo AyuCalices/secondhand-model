@@ -1,15 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a82d2df6-f96d-4203-b020-9b64cee8bfdd" name="Changes" comment="implemented offer service">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/236ea17a-ff3a-4231-a982-ab43541ca2f4.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="a82d2df6-f96d-4203-b020-9b64cee8bfdd" name="Changes" comment="after review teamwork -&gt; account, address, article, name">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/secondhand-model.eml" beforeDir="false" afterPath="$PROJECT_DIR$/secondhand-model.eml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/secondhand-model.iml" beforeDir="false" afterPath="$PROJECT_DIR$/secondhand-model.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/edu/htw/secondhand/service/OfferService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/htw/secondhand/service/OfferService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/edu/htw/secondhand/service/OrderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/htw/secondhand/service/OrderService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,10 +27,10 @@
     <option name="ROOT_SYNC" value="DONT_SYNC" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="jar:///Library/Java/JavaVirtualMachines/jdk-11.0.2.jdk/Contents/Home/lib/src.zip!/java.base/java/util/Comparator.java" root0="SKIP_INSPECTION" />
     <setting file="jar://$PROJECT_DIR$/../secondhand-model-submodule/server-api-11.0/javax.persistence-2.1.1.jar!/javax/persistence/EntityManager.class" root0="SKIP_INSPECTION" />
     <setting file="jar://$PROJECT_DIR$/../secondhand-model-submodule/server-api-11.0/javax.persistence-2.1.1.jar!/javax/persistence/TypedQuery.class" root0="SKIP_INSPECTION" />
     <setting file="jar://$PROJECT_DIR$/../secondhand-model-submodule/server-api-11.0/javax.ws.rs-api-2.1.jar!/javax/ws/rs/container/ContainerRequestFilter.class" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/src/edu/htw/secondhand/service/BasicAuthenticationSenderFilter.java" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="JpbToolWindowState">
     <option name="myId2FirstActivated">
@@ -64,22 +57,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;11&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/christopherknapp/git/secondhand-model/src/edu/htw/secondhand/service&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "jdk.selected.JAVA_MODULE": "11",
+    "last_opened_file_path": "/Users/christopherknapp/git/secondhand-model/src/edu/htw/secondhand/service",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "run.code.analysis.last.selected.profile": "pProject Default",
+    "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/edu/htw/secondhand/service" />
@@ -138,9 +131,7 @@
       <workItem from="1668380760871" duration="695000" />
       <workItem from="1668381612058" duration="657000" />
       <workItem from="1668548740226" duration="44699000" />
-      <workItem from="1668952167274" duration="3720000" />
-      <workItem from="1668972948780" duration="1606000" />
-      <workItem from="1669253531099" duration="1704000" />
+      <workItem from="1669328928542" duration="13000" />
     </task>
     <task id="LOCAL-00001" summary="added submodule">
       <created>1666474489030</created>
@@ -180,6 +171,9 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
+    <ignored-roots>
+      <path value="$PROJECT_DIR$/secondhand-model-submodule" />
+    </ignored-roots>
     <MESSAGE value="added submodule" />
     <MESSAGE value="added nullable to order fields" />
     <MESSAGE value="final code review task 1 (100%)" />
@@ -193,6 +187,10 @@
           <line>28</line>
           <option name="timeStamp" value="9" />
         </line-breakpoint>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.ExceptionInInitializerError" package="java.lang" />
+          <option name="timeStamp" value="11" />
+        </breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
