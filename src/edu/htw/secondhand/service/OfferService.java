@@ -124,7 +124,6 @@ public class OfferService {
             if (offer == null) throw new ClientErrorException(NOT_FOUND);
         }
 
-        offer.setAvatar(offerTemplate.getAvatar());
         offer.setVersion(offerTemplate.getVersion());
         offer.setOrder(offerTemplate.getOrder());
         offer.setPostage(offerTemplate.getPostage());
@@ -134,6 +133,11 @@ public class OfferService {
         offer.getArticle().setBrand(offerTemplate.getArticle().getBrand());
         offer.getArticle().setCategory(offerTemplate.getArticle().getCategory());
         offer.getArticle().setDescription(offerTemplate.getArticle().getDescription());
+        if (avatarReference != null) {
+            final Document avatar = entityManager.find(Document.class, avatarReference);
+            if (avatar == null) throw new ClientErrorException(NOT_FOUND);
+            offer.setAvatar(avatar);
+        }
 
         if (insertMode)
             entityManager.persist(offer);
