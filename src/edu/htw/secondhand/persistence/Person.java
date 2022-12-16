@@ -31,22 +31,28 @@ public class Person extends BaseEntity {
     @Column(nullable = false, updatable = true, length = 128, unique = true)
     @CacheIndex(updateable = true)
     private String email;
+
     @NotNull @Size(min = 64, max = 64)
     @Column(nullable = false, updatable = true, length = 64)
     private String passwordHash;
+
     @NotNull
     @Enumerated(EnumType.STRING)
     @Column(name = "groupAlias", nullable = false, updatable = true)
     private Group group;
+
     @NotNull @Valid
     @Embedded
     private Name name;
+
     @NotNull @Valid
     @Embedded
     private Address address;
+
     @NotNull @Valid
     @Embedded
     private Account account;
+
     @NotNull
     @ElementCollection
     @CollectionTable(
@@ -57,12 +63,16 @@ public class Person extends BaseEntity {
     )
     @Column(name = "phone", nullable = false, updatable = false, insertable = true, length = 16)
     private Set<String> phones;
-    @NotNull
+
     @ManyToOne(optional = false)
     @JoinColumn(name = "avatarReference", nullable = false, updatable = true)
     private Document avatar;
+
+    @NotNull
     @OneToMany(mappedBy = "seller", cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.REMOVE})
     private Set<Offer> offers;
+
+    @NotNull
     @OneToMany(mappedBy = "buyer", cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.REMOVE})
     private Set<Order> orders;
 

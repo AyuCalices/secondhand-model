@@ -21,21 +21,27 @@ public class Offer extends BaseEntity{
     @NotNull @Valid
     @Embedded
     private Article article;
+
     @NotNull @Size(max = 32)
     @Column(nullable = false, updatable = true, length = 32)
     private String serial;
+
     @PositiveOrZero
     @Column(nullable = false, updatable = true)
     private long price;
+
     @PositiveOrZero
     @Column(nullable = false, updatable = true)
     private long postage;
+
     @ManyToOne(optional = false)
     @JoinColumn(name = "sellerReference", nullable = false, updatable = false, insertable = true)
     private Person seller;
+
     @ManyToOne(optional = false)
     @JoinColumn(name = "avatarReference", nullable = false, updatable = true)
     private Document avatar;
+
     @ManyToOne(optional = true)
     @JoinColumn(name = "purchaseReference", nullable = true, updatable = true)
     private Order order;

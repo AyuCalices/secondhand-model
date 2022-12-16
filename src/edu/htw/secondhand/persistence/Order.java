@@ -6,6 +6,7 @@ import javax.json.bind.annotation.JsonbProperty;
 import javax.json.bind.annotation.JsonbTransient;
 import javax.json.bind.annotation.JsonbVisibility;
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.Collections;
 import java.util.Set;
@@ -20,16 +21,22 @@ public class Order extends BaseEntity {
 
     @Column(nullable = true, updatable = true)
     private Long payed;
+
     @Column(nullable = true, updatable = true)
     private Long departed;
+
     @Column(nullable = true, updatable = true)
     private Long arrived;
+
     @Size(max = 255)
     @Column(nullable = true, updatable = true, length = 255)
     private String trackingReference;
+
     @ManyToOne(optional = false)
     @JoinColumn(name = "buyerReference", nullable = false, updatable = false, insertable = true)
     private Person buyer;
+
+    @NotNull
     @OneToMany(mappedBy = "order", cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
     private Set<Offer> offers;
 

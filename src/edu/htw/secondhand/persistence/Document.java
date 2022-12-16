@@ -22,9 +22,11 @@ public class Document extends BaseEntity {
     @Column(nullable = false, updatable = false, insertable = true, length = 64, unique = true)
     @CacheIndex(updateable = false)
     private String hash;
+
     @NotNull @Size(max = 63)
     @Column(nullable = false, updatable = true, length = 63)
     private String type;
+
     @NotNull
     @Column(nullable = false, updatable = false, insertable = true, length = Integer.MAX_VALUE)
     private byte[] content;
