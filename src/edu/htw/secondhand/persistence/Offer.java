@@ -118,6 +118,11 @@ public class Offer extends BaseEntity{
         return this.avatar == null ? null : this.avatar.getIdentity();
     }
 
+    @JsonbProperty(nillable = true)
+    protected Long getBuyerReference() {
+        return this.order == null ? null : this.order.getBuyerReference();
+    }
+
     @JsonbProperty
     protected Long getSellerReference() {
         return this.seller == null ? null : this.seller.getIdentity();
