@@ -50,6 +50,7 @@ public class Offer extends BaseEntity{
         this(null);
     }
     public Offer(Person seller) {
+        this.article = new Article();
         this.seller = seller;
     }
 
