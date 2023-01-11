@@ -31,7 +31,7 @@ public class OrderService {
     @Produces(TEXT_PLAIN)
     public long createOrUpdateOrder(
             @HeaderParam(REQUESTER_IDENTITY) @Positive final long requesterIdentity,
-            @QueryParam("offerReference") @Positive final Set<Long> offerReferences,
+            @QueryParam("offerReference") final Set<Long> offerReferences,
             @NotNull @Valid final Order orderTemplate
     ) {
         final EntityManager entityManager = RestJpaLifecycleProvider.entityManager("secondhand");
@@ -72,10 +72,12 @@ public class OrderService {
             entityManager.getTransaction().begin();
         }
 
-        Person seller = order.getOffers().stream().map(Offer::getSeller).findAny().orElse(null);
-        final Set<Offer> offers = offerReferences.stream().map(x -> entityManager.find(Offer.class, x)).collect(Collectors.toSet());
-        for (final Offer offer : offers) {
-            if (offer.getSeller() != null && offer.getSeller().getIdentity() != seller.getIdentity()) throw new ClientErrorException(FORBIDDEN);
+        Person seller = null;
+        for (final long offerReference : offerReferences) {
+            final Offer offer = entityManager.find(Offer.class, offerReference);
+            if (offer == null) throw new ClientErrorException(Response.Status.NOT_FOUND);
+            if (seller != null && seller.getIdentity() != offer.getSeller().getIdentity())
+                throw new ClientErrorException(Response.Status.FORBIDDEN);
             seller = offer.getSeller();
             offer.setOrder(order);
         }
