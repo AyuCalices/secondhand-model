@@ -22,8 +22,8 @@ public class Offer extends BaseEntity{
     @Embedded
     private Article article;
 
-    @NotNull @Size(max = 32)
-    @Column(nullable = false, updatable = true, length = 32)
+    @Size(max = 32)
+    @Column(nullable = true, updatable = true, length = 32)
     private String serial;
 
     @PositiveOrZero
