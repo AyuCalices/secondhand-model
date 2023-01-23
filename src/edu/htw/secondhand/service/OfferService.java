@@ -56,10 +56,10 @@ public class OfferService {
             @QueryParam("description") final String description,
 
             @QueryParam("serial") final String serial,
-            @QueryParam("lowerPrice") final long lowerPrice,
-            @QueryParam("upperPrice") final long upperPrice,
-            @QueryParam("lowerPostage") final long lowerPostage,
-            @QueryParam("upperPostage") final long upperPostage
+            @QueryParam("lowerPrice") final Long lowerPrice,
+            @QueryParam("upperPrice") final Long upperPrice,
+            @QueryParam("lowerPostage") final Long lowerPostage,
+            @QueryParam("upperPostage") final Long upperPostage
     ){
         final EntityManager entityManager = RestJpaLifecycleProvider.entityManager("secondhand");
 
